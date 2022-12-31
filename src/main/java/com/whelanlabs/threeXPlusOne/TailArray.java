@@ -1,5 +1,6 @@
 package com.whelanlabs.threeXPlusOne;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TailArray {
@@ -31,6 +32,13 @@ public class TailArray {
 		_xbValue = 0;
 	}
 	
+	public TailArray(Integer a, Integer b, List<Integer> resultArray, Integer shifts) {
+		_tail = resultArray;
+		_shifts = shifts;
+		_xaValue = a;
+		_xbValue = b;
+	}
+
 	public Integer getXAValue() {
 		return _xaValue;
 	}
@@ -44,6 +52,9 @@ public class TailArray {
 	}
 	
 	public List<Integer> getTail() {
-		return _tail;
+		List<Integer> result = new ArrayList<>();
+		result.addAll(_tail);
+		return result;
 	}
+
 }
