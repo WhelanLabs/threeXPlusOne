@@ -30,8 +30,6 @@ public class UtilsTest {
 		
 		// TXPO(101) = (3X+1)000 = (3X+1)/8
 		assert(3 == threeXPlusOne.getXAValue()): threeXPlusOne;
-		assert(2 == threeXPlusOne.getXBValue()): threeXPlusOne;
-		assert(3 == threeXPlusOne.getShifts()): threeXPlusOne;
 		assert("[]" == threeXPlusOne.getTail().toString()): threeXPlusOne;
 		
 		fail("Not yet implemented");

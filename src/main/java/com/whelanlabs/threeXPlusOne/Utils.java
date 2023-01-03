@@ -68,20 +68,26 @@ public class Utils {
 			b+=1;
 		}
 		
+		List<Integer> reversedResultArray = new ArrayList<>();
 		List<Integer> resultArray = new ArrayList<>();
 		Boolean shift = true;
 		
 		System.out.println("temp = " + temp);
 
-		for(int i=temp.size()-1; i>=0; i--) {
+		for(int i=0; i<temp.size(); i++) {
 			Integer value = temp.get(i);
 			if(value==0 & shift) {
 				shifts += 1;
 			}
 			else {
 				shift = false;
-				resultArray.add(value);
+				reversedResultArray.add(value);
 			}
+		}
+		
+		for(int i=reversedResultArray.size()-1; i>=0; i--) {
+			Integer value = reversedResultArray.get(i);
+			resultArray.add(value);
 		}
 		
 		
