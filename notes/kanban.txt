@@ -3,12 +3,15 @@
 ##########################################################
 
 * Create TailArray class
+
+* create utils.get3XPlusOne()
+
   
 ##########################################################
 # WIP
 ##########################################################
 
-* create utility method to add TailArray plus 2X+1 of TailArray ( utils.get3XPlusOne() ).
+* switch get3XPlusOne to use string-based case statements for better code coverage.
 
 ##########################################################
 # backlog

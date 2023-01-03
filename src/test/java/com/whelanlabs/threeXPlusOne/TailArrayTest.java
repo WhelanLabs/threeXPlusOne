@@ -61,4 +61,26 @@ public class TailArrayTest {
 		assert("[1, 0, 1]".equals(str)):str;
 	}
 	
+	@Test
+	public void getValue_is5_is5() {
+		List<Integer> array = Arrays.asList(1, 0, 1);
+		TailArray tailArray = new TailArray(array);
+		Integer tailValue = tailArray.getTailValue();
+		assert(5==tailValue):tailValue;
+	}
+	
+	@Test
+	public void toString_valid_getString() {
+		List<Integer> array = Arrays.asList(1, 0, 1);
+		TailArray tailArray = new TailArray(array);
+		String tailArrayString = tailArray.toString();
+		assert("{ base:\"(1X+0)[1, 0, 1]\", shifts:0 }".equals(tailArrayString)):tailArrayString;
+	}
 }
+
+
+
+
+
+
+

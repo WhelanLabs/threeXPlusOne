@@ -19,7 +19,7 @@ public class UtilsTest {
 		assert(3 == threeXPlusOne.getXAValue()): threeXPlusOne;
 		assert(2 == threeXPlusOne.getXBValue()): threeXPlusOne;
 		assert(3 == threeXPlusOne.getShifts()): threeXPlusOne;
-		assert("[]" == threeXPlusOne.getTail().toString()): threeXPlusOne;
+		assert("[]".equals(threeXPlusOne.getTail().toString())): threeXPlusOne;
 	}
 
 	@Test
@@ -30,8 +30,19 @@ public class UtilsTest {
 		
 		// TXPO(101) = (3X+1)000 = (3X+1)/8
 		assert(3 == threeXPlusOne.getXAValue()): threeXPlusOne;
-		assert("[]" == threeXPlusOne.getTail().toString()): threeXPlusOne;
+		String tail = threeXPlusOne.getTail().toString();
+		assert("[0, 0, 1, 0, 1]".equals(tail)): tail;
+	}
+	
+	@Test
+	public void get3XPlusOne_good3_success() {
+		List<Integer> array = Arrays.asList(0, 0, 1, 0, 0, 1);
+		TailArray input = new TailArray(array);
+		TailArray threeXPlusOne = Utils.get3XPlusOne(input);
 		
-		fail("Not yet implemented");
+		// TXPO(101) = (3X+1)000 = (3X+1)/8
+		assert(3 == threeXPlusOne.getXAValue()): threeXPlusOne;
+		String tail = threeXPlusOne.getTail().toString();
+		assert("[0, 0, 1, 0, 1]".equals(tail)): tail;
 	}
 }

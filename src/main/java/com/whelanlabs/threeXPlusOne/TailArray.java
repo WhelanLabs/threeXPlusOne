@@ -6,6 +6,7 @@ import java.util.List;
 public class TailArray {
 
 	private List<Integer> _tail;
+	private Integer _tailValue;
 	private Integer _shifts;
 	private Integer _xaValue;
 	private Integer _xbValue;
@@ -30,13 +31,25 @@ public class TailArray {
 		// The initial leading X value is: AX+B = 1X+0
 		_xaValue = 1;
 		_xbValue = 0;
+		
+		_tailValue = getTailValue();
 	}
 	
-	public TailArray(Integer a, Integer b, List<Integer> resultArray, Integer shifts) {
-		_tail = resultArray;
+	public TailArray(Integer a, Integer b, List<Integer> tail, Integer shifts) {
+		_tail = tail;
 		_shifts = shifts;
 		_xaValue = a;
 		_xbValue = b;
+		_tailValue = getTailValue();
+	}
+
+	public Integer getTailValue() {
+		Integer result = 0;
+		for(int i=_tail.size()-1; i>=0; i--) {
+			int pos = _tail.size()-i-1;
+			result += 2^pos;
+		}
+		return result;
 	}
 
 	public Integer getXAValue() {
@@ -55,6 +68,10 @@ public class TailArray {
 		List<Integer> result = new ArrayList<>();
 		result.addAll(_tail);
 		return result;
+	}
+	
+	public String toString() {
+		return "{ base:\"(" + _xaValue + "X+" + _xbValue + ")" + _tail + "\", shifts:" + _shifts +" }";
 	}
 
 }
