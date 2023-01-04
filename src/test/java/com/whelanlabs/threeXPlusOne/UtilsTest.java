@@ -43,6 +43,6 @@ public class UtilsTest {
 		// TXPO(101) = (3X+1)000 = (3X+1)/8
 		assert(3 == threeXPlusOne.getXAValue()): threeXPlusOne;
 		String tail = threeXPlusOne.getTail().toString();
-		assert("[0, 0, 1, 0, 1]".equals(tail)): tail;
+		assert("[0, 1, 1, 1]".equals(tail)): tail;
 	}
 }

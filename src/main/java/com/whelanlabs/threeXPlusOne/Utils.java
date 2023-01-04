@@ -27,38 +27,42 @@ public class Utils {
 			Integer v1 = oneXList.get(i);
 			Integer v2 = twoXPlusOneList.get(i+1);
 			Integer v3 = 0;
-			if(v1==0 & v2==0 & r==0) {
+			String valuesString = "[" + v1 + "," + v2 + "," + r + "]";
+		     switch (valuesString) {
+	         case "[0,0,0]":
 				v3 = 0;
 				r = 0;
-			}
-			else if(v1==0 & v2==0 & r==1) {
+				break;
+	         case "[0,0,1]":
 				v3 = 1;
 				r = 0;
-			}
-			else if(v1==0 & v2==1 & r==0) {
+				break;
+	         case "[0,1,0]":
 				v3 = 1;
 				r = 0;
-			}
-			else if(v1==0 & v2==1 & r==1) {
+				break;
+	         case "[0,1,1]":
 				v3 = 0;
 				r = 1;
-			}
-			else if(v1==1 & v2==0 & r==0) {
+				break;
+	         case "[1,0,0]":
 				v3 = 1;
 				r = 0;
-			}
-			else if(v1==1 & v2==0 & r==1) {
+				break;
+	         case "[1,0,1]":
 				v3 = 0;
 				r = 1;
-			}
-			else if(v1==1 & v2==1 & r==0) {
+				break;
+	         case "[1,1,0]":
 				v3 = 0;
 				r = 1;
-			}
-			else if(v1==1 & v2==1 & r==1) {
+				break;
+	         case "[1,1,1]":
 				v3 = 1;
 				r = 1;
-			}
+				break;
+	     }
+		     
 			temp.add(v3);
 		}
 		if(r==1) {
