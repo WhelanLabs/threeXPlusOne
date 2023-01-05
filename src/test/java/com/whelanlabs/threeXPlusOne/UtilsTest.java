@@ -45,4 +45,17 @@ public class UtilsTest {
 		String tail = threeXPlusOne.getTail().toString();
 		assert("[0, 1, 1, 1]".equals(tail)): tail;
 	}
+	
+	//
+	@Test
+	public void getListOfBits_good_success() {
+		List<List<Integer>> results = Utils.getListOfBits(4);
+		
+		System.out.println(results);
+		assert(15 == results.size()): results.size();
+		List<Integer> n10 = results.get(10);
+		String nTenString = n10.toString();
+		assert("[1, 0, 1, 1]".equals(nTenString)): nTenString;
+
+	}
 }

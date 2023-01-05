@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Utils {
 	
+	private static Character CHAR_ZERO = (Character)'0';
+	
 	private Utils() {
 		// static class
 	}
@@ -103,6 +105,29 @@ public class Utils {
 		System.out.println("shifts = " + shifts);
 
 		return new TailArray(a, b, resultArray, shifts);
+	}
+
+	public static List<List<Integer>> getListOfBits(Integer length) {
+		List<List<Integer>> results = new ArrayList<>();
+		Long maxNum = ((Double)Math.pow(2l, length)).longValue();
+		for(Long i=1l; i<maxNum; i++) {
+			String numString = Long.toString(i, 2);
+			while(numString.length()<length) {
+				numString = "0" + numString;
+			}
+			List<Integer> bitList = new ArrayList<>();
+			for(int j=0; j<numString.length(); j++) {
+				char bitString = numString.charAt(j);
+				if(CHAR_ZERO.equals(bitString)) {
+					bitList.add(0);
+				}
+				else {
+					bitList.add(1);
+				}
+			}
+			results.add(bitList);
+		}
+		return results;
 	}
 
 }
