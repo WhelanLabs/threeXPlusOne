@@ -14,6 +14,8 @@
 # WIP
 ##########################################################
 
+* change github commits to use whelanlabs
+
 * calculate pre and post values for A and B
   - include "+b*2^(size)" for pre and post
 
