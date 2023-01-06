@@ -52,6 +52,15 @@ public class TailArray {
 		return result;
 	}
 
+	public static Integer getTailValue(List<Integer> tail) {
+		Integer result = 0;
+		for(int i=tail.size()-1; i>=0; i--) {
+			int pos = tail.size()-i-1;
+			result += 2^pos;
+		}
+		return result;
+	}
+	
 	public Integer getXAValue() {
 		return _xaValue;
 	}

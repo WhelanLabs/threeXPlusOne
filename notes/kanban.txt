@@ -6,12 +6,20 @@
 
 * create utils.get3XPlusOne()
 
+* switch get3XPlusOne to use string-based case statements for better code coverage.
+
+* calculate pre and post values for A and B
   
 ##########################################################
 # WIP
 ##########################################################
 
-* switch get3XPlusOne to use string-based case statements for better code coverage.
+* calculate pre and post values for A and B
+  - include "+b*2^(size)" for pre and post
+
+* id dead ends in 3x+1 results
+
+* run iterative tests on living branches
 
 ##########################################################
 # backlog

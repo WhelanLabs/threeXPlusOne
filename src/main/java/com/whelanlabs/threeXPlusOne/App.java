@@ -16,7 +16,10 @@ public class App
     public static void main()
     {
         System.out.println( "Hello World!" );
-        Integer length = 4;
+        Integer length = 6;
+        
+		System.out.println("length = " + length);
+
 
         List<List<Integer>> listOfListOfBits = Utils.getListOfBits(length);
         for(List<Integer> listOfBits: listOfListOfBits) {
