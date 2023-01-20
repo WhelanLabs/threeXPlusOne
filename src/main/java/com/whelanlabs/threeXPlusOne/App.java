@@ -16,7 +16,7 @@ public class App
     public static void main()
     {
         System.out.println( "Hello World!" );
-        Integer length = 6;
+        Integer length = 4;
         
 		System.out.println("length = " + length);
 
@@ -24,10 +24,14 @@ public class App
         List<List<Integer>> listOfListOfBits = Utils.getListOfBits(length);
         for(List<Integer> listOfBits: listOfListOfBits) {
         	if(1 == listOfBits.get(listOfBits.size()-1)) {
-        		System.out.println("");
+        		System.out.println("################################");
         		System.out.println("listOfBits = " + listOfBits);
             	TailArray tailArray = new TailArray(listOfBits);
             	TailArray threeXPlusOne = Utils.get3XPlusOne(tailArray);
+            	if(!(threeXPlusOne.getSmaller())) {
+            		System.out.println("#######");
+            		TailArray level2 = Utils.get3XPlusOne(threeXPlusOne);
+            	}
         	}
 
         }
