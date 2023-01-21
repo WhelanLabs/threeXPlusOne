@@ -26,11 +26,12 @@ public class App
         	if(1 == listOfBits.get(listOfBits.size()-1)) {
         		System.out.println("################################");
         		System.out.println("listOfBits = " + listOfBits);
-            	TailArray tailArray = new TailArray(listOfBits);
-            	TailArray threeXPlusOne = Utils.get3XPlusOne(tailArray);
-            	if(!(threeXPlusOne.getSmaller())) {
+            	TailArray startingTailArray = new TailArray(listOfBits);
+            	TailArray resultingTailArray = Utils.get3XPlusOne(startingTailArray);
+            	Boolean isSmaller = Utils.isSmaller(startingTailArray, resultingTailArray);
+            	if(!(isSmaller)) {
             		System.out.println("#######");
-            		TailArray level2 = Utils.get3XPlusOne(threeXPlusOne);
+            		TailArray level2 = Utils.get3XPlusOne(resultingTailArray);
             	}
         	}
 

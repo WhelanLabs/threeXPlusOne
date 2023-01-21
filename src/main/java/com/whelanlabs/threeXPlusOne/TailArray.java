@@ -36,13 +36,12 @@ public class TailArray {
 		_tailValue = getTailValue();
 	}
 	
-	public TailArray(Integer a, Integer b, List<Integer> tail, Integer shifts, Boolean smaller) {
+	public TailArray(Integer a, Integer b, List<Integer> tail, Integer shifts) {
 		_tail = tail;
 		_shifts = shifts;
 		_xaValue = a;
 		_xbValue = b;
 		_tailValue = getTailValue();
-		_smaller = smaller;
 	}
 
 	public Integer getTailValue() {
@@ -73,10 +72,6 @@ public class TailArray {
 	
 	public Integer getShifts() {
 		return _shifts;
-	}
-	
-	public Boolean getSmaller() {
-		return _smaller;
 	}
 	
 	public List<Integer> getTail() {

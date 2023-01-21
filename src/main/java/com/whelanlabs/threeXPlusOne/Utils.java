@@ -116,15 +116,9 @@ public class Utils {
 		//System.out.println("pre_b = " + pre_b);
 		//System.out.println("post_b = " + post_b);
 		
-		if(pre_a>post_a & pre_b>post_b) {
-			System.out.println("### dead end ###");
-			smaller = true;
-		}
-		else if(pre_a>post_a) {
-			System.out.println("### future dead end ###");
-		}
+
 				
-		return new TailArray(a, b, resultArray, shifts, smaller);
+		return new TailArray(a, b, resultArray, shifts);
 	}
 
 	public static List<List<Integer>> getListOfBits(Integer length) {
@@ -148,6 +142,24 @@ public class Utils {
 			results.add(bitList);
 		}
 		return results;
+	}
+
+	public static Boolean isSmaller(TailArray a, TailArray b) {
+		Boolean result = false;
+		
+		if(a.getXAValue()>b.getXAValue() & a.getXBValue()>b.getXBValue()) {
+			System.out.println("### dead end ###");
+			result = true;
+		}
+		else if(a.getXAValue()>b.getXAValue()) {
+			System.out.println("### future dead end ###");
+			result = null;
+		}
+		else {
+			System.out.println("### not smaller ###");
+		}
+		
+		return result;
 	}
 
 }
