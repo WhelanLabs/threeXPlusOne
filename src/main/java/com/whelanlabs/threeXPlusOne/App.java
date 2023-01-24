@@ -20,7 +20,6 @@ public class App
         
 		System.out.println("length = " + length);
 
-
         List<List<Integer>> listOfListOfBits = Utils.getListOfBits(length);
         for(List<Integer> listOfBits: listOfListOfBits) {
         	if(1 == listOfBits.get(listOfBits.size()-1)) {
@@ -29,7 +28,7 @@ public class App
             	TailArray startingTailArray = new TailArray(listOfBits);
             	TailArray resultingTailArray = Utils.get3XPlusOne(startingTailArray);
             	Boolean isSmaller = Utils.isSmaller(startingTailArray, resultingTailArray);
-            	if(!(isSmaller)) {
+            	if(null == isSmaller || !(isSmaller)) {
             		System.out.println("#######");
             		TailArray level2 = Utils.get3XPlusOne(resultingTailArray);
             	}

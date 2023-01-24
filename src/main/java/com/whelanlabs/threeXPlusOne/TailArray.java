@@ -8,7 +8,7 @@ public class TailArray {
 	private List<Integer> _tail;
 	private Integer _tailValue;
 	private Integer _shifts;
-	private Integer _xaValue;
+	private Double _xaValue;
 	private Integer _xbValue;
 	private Boolean _smaller = false;
 	
@@ -30,13 +30,13 @@ public class TailArray {
 		_tail = tail;
 		_shifts = 0;
 		// The initial leading X value is: AX+B = 1X+0
-		_xaValue = 1;
+		_xaValue = Math.pow(2, tail.size());
 		_xbValue = 0;
 		
 		_tailValue = getTailValue();
 	}
 	
-	public TailArray(Integer a, Integer b, List<Integer> tail, Integer shifts) {
+	public TailArray(Double a, Integer b, List<Integer> tail, Integer shifts) {
 		_tail = tail;
 		_shifts = shifts;
 		_xaValue = a;
@@ -62,7 +62,7 @@ public class TailArray {
 		return result;
 	}
 	
-	public Integer getXAValue() {
+	public Double getXAValue() {
 		return _xaValue;
 	}
 	

@@ -19,7 +19,7 @@ public class Utils {
 
 		
 		Integer r = 0;
-		Integer a = input.getXAValue() *3;
+		Double a = input.getXAValue() *3;
 		Integer b = 0;
 		Integer shifts = input.getShifts();
 
@@ -106,8 +106,8 @@ public class Utils {
 		
 		// pre = tail + x*2^size +b*2^(size)
 		// post = remainder + ax*2^(size - shift)  +b*2^(size - shift)
-		Integer pre_a = (int) (input.getXAValue() * Math.pow(2, input.getTail().size()));
-		Integer post_a = (int) (input.getXAValue()*3 * Math.pow(2, input.getTail().size()-shifts));
+		double pre_a = input.getXAValue();
+		double post_a = input.getXAValue()*3 / Math.pow(2, shifts);
 		System.out.println("pre_a = " + pre_a);
 		System.out.println("post_a = " + post_a);
 		
@@ -118,7 +118,7 @@ public class Utils {
 		
 
 				
-		return new TailArray(a, b, resultArray, shifts);
+		return new TailArray(post_a, b, resultArray, shifts);
 	}
 
 	public static List<List<Integer>> getListOfBits(Integer length) {
