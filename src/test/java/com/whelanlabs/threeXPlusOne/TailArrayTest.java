@@ -65,7 +65,7 @@ public class TailArrayTest {
 	public void getValue_is5_is5() {
 		List<Integer> array = Arrays.asList(1, 0, 1);
 		TailArray tailArray = new TailArray(array);
-		Integer tailValue = tailArray.getTailValue();
+		Double tailValue = tailArray.getTailValue();
 		assert(5==tailValue):tailValue;
 	}
 	

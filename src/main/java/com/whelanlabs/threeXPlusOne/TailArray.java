@@ -6,7 +6,7 @@ import java.util.List;
 public class TailArray {
 
 	private List<Integer> _tail;
-	private Integer _tailValue;
+	private Double _tailValue;
 	private Integer _shifts;
 	private Double _xaValue;
 	private Integer _xbValue;
@@ -44,11 +44,13 @@ public class TailArray {
 		_tailValue = getTailValue();
 	}
 
-	public Integer getTailValue() {
-		Integer result = 0;
-		for(int i=_tail.size()-1; i>=0; i--) {
+	public Double getTailValue() {
+		Double result = 0d;
+		for(int i=0; i<_tail.size(); i++) {
 			int pos = _tail.size()-i-1;
-			result += 2^pos;
+			if(_tail.get(i)==1) {
+				result += Math.pow(2, pos);
+			}
 		}
 		return result;
 	}

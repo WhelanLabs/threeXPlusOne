@@ -19,7 +19,6 @@ public class Utils {
 
 		
 		Integer r = 0;
-		Double a = input.getXAValue() *3;
 		Integer b = 0;
 		Integer shifts = input.getShifts();
 
@@ -100,7 +99,6 @@ public class Utils {
 		Boolean smaller = false;
 		
 		System.out.println("str = " + resultArray);
-		System.out.println("a = " + a);
 		System.out.println("b = " + b);
 		System.out.println("shifts = " + shifts);
 		
@@ -111,10 +109,10 @@ public class Utils {
 		System.out.println("pre_a = " + pre_a);
 		System.out.println("post_a = " + post_a);
 		
-		Integer pre_b = input.getTailValue();
+		Double pre_b = input.getTailValue();
 		Integer post_b = TailArray.getTailValue(resultArray);
-		//System.out.println("pre_b = " + pre_b);
-		//System.out.println("post_b = " + post_b);
+		System.out.println("pre_b = " + pre_b);
+		System.out.println("post_b = " + post_b);
 		
 
 				
