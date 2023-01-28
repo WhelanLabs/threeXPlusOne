@@ -21,7 +21,7 @@ public class Utils {
 		twoXPlusOneList.add(1);
 
 		Integer r = 0;
-		Integer b = 0;
+		Double b = input.getXBValue();
 		Integer shifts = input.getShifts();
 
 		List<Integer> temp = new ArrayList<>();
@@ -70,14 +70,16 @@ public class Utils {
 			temp.add(v3);
 		}
 		
-		temp.add(r);
+		// add the remainder to the front - incorrect because don't know smallest bit for x
+		// temp.add(r);
 
 //		if (r == 1) {
 //			b += 1;
 //		}
 		
 		if (twoXPlusOneList.get(0) == 1) {
-			b += 1;
+			//b += 1;
+			b+= Math.pow(2, input.getTail().size() + input.getShifts());
 		}
 
 		List<Integer> reversedResultArray = new ArrayList<>();
@@ -144,13 +146,20 @@ public class Utils {
 		return results;
 	}
 
-	public static Boolean isSmaller(TailArray a, TailArray b) {
+	public static Boolean isSmaller(TailArray pre, TailArray post) {
 		Boolean result = false;
 
-		if (a.getXAValue() > b.getXAValue() & a.getXBValue() > b.getXBValue()) {
+		double before_b_plus_c = pre.getXBValue() + pre.getTailValue();
+		double after_b_plus_c = post.getXBValue() + post.getTailValue();
+
+		
+		if(pre.getXAValue() == post.getXAValue() && before_b_plus_c == after_b_plus_c ) {
+			System.out.println("### bingo ###");
+		}
+		else if (pre.getXAValue() >= post.getXAValue() && pre.getXBValue() >= post.getXBValue()) {
 			System.out.println("### dead end ###");
 			result = true;
-		} else if (a.getXAValue() > b.getXAValue()) {
+		} else if (pre.getXAValue() > post.getXAValue()) {
 			System.out.println("### future dead end ###");
 			result = null;
 		} else {

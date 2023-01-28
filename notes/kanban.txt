@@ -33,9 +33,7 @@
 ##########################################################
 
 
-
-* create utility method to calculate X/2 TailArray for even values.
-
-
-
 * write the readme.
+
+* ponder if looking at headstrings might proove more benificial to
+  calculate for smallest initial odd value. (next project?)
