@@ -13,6 +13,9 @@ public class Utils {
 	}
 
 	public static TailArray get3XPlusOne(TailArray input) {
+		
+		System.out.println("input = " + input);
+		
 		List<Integer> oneXList = input.getTail();
 		List<Integer> twoXPlusOneList = input.getTail();
 		twoXPlusOneList.add(1);
@@ -97,23 +100,26 @@ public class Utils {
 			resultArray.add(value);
 		}
 
-		System.out.println("str = " + resultArray);
-		System.out.println("b = " + b);
+		//System.out.println("str = " + resultArray);
+		//System.out.println("b = " + b);
 		System.out.println("shifts = " + shifts);
 
 		// pre = tail + x*2^size +b*2^(size)
 		// post = remainder + ax*2^(size - shift) +b*2^(size - shift)
 		double pre_a = input.getXAValue();
 		double post_a = input.getXAValue() * 3 / Math.pow(2, shifts);
-		System.out.println("pre_a = " + pre_a);
-		System.out.println("post_a = " + post_a);
+		// System.out.println("pre_a = " + pre_a);
+		// System.out.println("post_a = " + post_a);
 
 		Double pre_b = input.getTailValue();
 		Integer post_b = TailArray.getTailValue(resultArray);
-		System.out.println("pre_b = " + pre_b);
-		System.out.println("post_b = " + post_b);
+		// System.out.println("pre_b = " + pre_b);
+		//System.out.println("post_b = " + post_b);
 
-		return new TailArray(post_a, b, resultArray, shifts);
+		TailArray result = new TailArray(post_a, b, resultArray, shifts);
+		System.out.println("result = " + result);
+
+		return result;
 	}
 
 	public static List<List<Integer>> getListOfBits(Integer length) {
