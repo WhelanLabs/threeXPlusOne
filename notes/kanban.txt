@@ -12,14 +12,18 @@
   
 * change github commits to use whelanlabs instead of BWS.
 
-##########################################################
-# WIP
-##########################################################
-
 * calculate pre and post values for A and B
   - include "+b*2^(size)" for pre and post
 
 * id dead ends in 3x+1 results
+
+##########################################################
+# WIP
+##########################################################
+
+* fix post b value to represent power of value in context of initial tail 
+  and have it include tailstring value.
+  (b = carry_over + tailstring_value.)
 
 * run iterative tests on living branches
 
