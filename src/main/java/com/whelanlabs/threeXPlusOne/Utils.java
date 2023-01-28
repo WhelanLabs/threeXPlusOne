@@ -104,7 +104,7 @@ public class Utils {
 
 		//System.out.println("str = " + resultArray);
 		//System.out.println("b = " + b);
-		System.out.println("shifts = " + shifts);
+		//System.out.println("shifts = " + shifts);
 
 		// pre = tail + x*2^size +b*2^(size)
 		// post = remainder + ax*2^(size - shift) +b*2^(size - shift)

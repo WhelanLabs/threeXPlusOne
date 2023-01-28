@@ -17,13 +17,15 @@
 
 * id dead ends in 3x+1 results
 
+* fix post b value to represent power of value in context of initial tail 
+  and have it include tailstring value.
+  (b = carry_over + tailstring_value.)
+  
 ##########################################################
 # WIP
 ##########################################################
 
-* fix post b value to represent power of value in context of initial tail 
-  and have it include tailstring value.
-  (b = carry_over + tailstring_value.)
+* calculate distance to dead end (AX+C = ???)
 
 * run iterative tests on living branches
 
