@@ -97,8 +97,10 @@ public class Utils {
 		}
 
 		double post_a = input.getXAValue() * 3 / Math.pow(2, shifts);
+		double post_b = b / Math.pow(2, shifts);
+		
 
-		TailArray result = new TailArray(post_a, b, resultArray, shifts);
+		TailArray result = new TailArray(post_a, post_b, resultArray, shifts);
 		System.out.println("result = " + result);
 
 		return result;
@@ -136,12 +138,12 @@ public class Utils {
 		if(pre.getXAValue() == post.getXAValue() && before_b_plus_c == after_b_plus_c ) {
 			System.out.println("### bingo ###");
 		}
-		else if (pre.getXAValue() >= post.getXAValue() && pre.getXBValue() >= post.getXBValue()) {
+		else if (pre.getXAValue() >= post.getXAValue() && pre.getXCValue() >= post.getXAValue()) {
 			System.out.println("### dead end ###");
 			result = true;
 		} else if (pre.getXAValue() > post.getXAValue()) {
 			System.out.println("### future dead end ###");
-			result = null;
+			// result = null;
 		} else {
 			System.out.println("### not smaller ###");
 		}

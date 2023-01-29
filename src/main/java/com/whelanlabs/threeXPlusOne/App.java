@@ -22,16 +22,18 @@ public class App {
 			if (1 == listOfBits.get(listOfBits.size() - 1)) {
 				Boolean isSmaller = false;
 				List<Integer> currentBits = listOfBits;
+				TailArray startingPoint = new TailArray(currentBits);
+				TailArray startingTailArray = new TailArray(currentBits);
+
 				System.out.println("################################");
 
-				while (currentBits.size() > 0 && null != isSmaller && isSmaller == false) {
-					TailArray startingTailArray = new TailArray(currentBits);
-					System.out.println("currentBits = " + currentBits);
-
+				while (startingTailArray.getTail().size() > 0 && null != isSmaller && isSmaller == false) {
+					System.out.println("currentBits = " + startingTailArray.getTail());
+					//startingTailArray = 
 					TailArray resultingTailArray = Utils.get3XPlusOne(startingTailArray);
-					isSmaller = Utils.isSmaller(startingTailArray, resultingTailArray);
-					currentBits = resultingTailArray.getTail();
-					System.out.println("#######");
+					isSmaller = Utils.isSmaller(startingPoint, resultingTailArray);
+					startingTailArray = resultingTailArray;
+					System.out.println("");
 				}
 			}
 		}
