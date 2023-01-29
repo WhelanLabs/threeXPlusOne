@@ -25,7 +25,7 @@
 # WIP
 ##########################################################
 
-* calculate distance to dead end (AX+C = ???)
+* check program results and fix (cannot be right?)
 
 * run iterative tests on living branches
 
