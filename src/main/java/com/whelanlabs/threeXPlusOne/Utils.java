@@ -70,12 +70,6 @@ public class Utils {
 			temp.add(v3);
 		}
 		
-		// add the remainder to the front - incorrect because don't know smallest bit for x
-		// temp.add(r);
-
-//		if (r == 1) {
-//			b += 1;
-//		}
 		
 		if (twoXPlusOneList.get(0) == 1) {
 			//b += 1;
@@ -102,21 +96,7 @@ public class Utils {
 			resultArray.add(value);
 		}
 
-		//System.out.println("str = " + resultArray);
-		//System.out.println("b = " + b);
-		//System.out.println("shifts = " + shifts);
-
-		// pre = tail + x*2^size +b*2^(size)
-		// post = remainder + ax*2^(size - shift) +b*2^(size - shift)
-		double pre_a = input.getXAValue();
 		double post_a = input.getXAValue() * 3 / Math.pow(2, shifts);
-		// System.out.println("pre_a = " + pre_a);
-		// System.out.println("post_a = " + post_a);
-
-		Double pre_b = input.getTailValue();
-		Integer post_b = TailArray.getTailValue(resultArray);
-		// System.out.println("pre_b = " + pre_b);
-		//System.out.println("post_b = " + post_b);
 
 		TailArray result = new TailArray(post_a, b, resultArray, shifts);
 		System.out.println("result = " + result);
