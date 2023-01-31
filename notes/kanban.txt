@@ -26,6 +26,7 @@
 ##########################################################
 
 * check program results and fix (cannot be right?)
+  - X0101 seems wrong (3X+1, not 3x+0)
 
 * run iterative tests on living branches
 

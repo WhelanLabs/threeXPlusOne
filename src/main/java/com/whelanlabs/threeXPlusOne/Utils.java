@@ -22,7 +22,7 @@ public class Utils {
 
 		Integer r = 0;
 		Double b = input.getXBValue();
-		Integer shifts = input.getShifts();
+		Integer shifts = 0;  //input.getShifts();
 
 		List<Integer> temp = new ArrayList<>();
 		for (int i = oneXList.size() - 1; i >= 0; i--) {
