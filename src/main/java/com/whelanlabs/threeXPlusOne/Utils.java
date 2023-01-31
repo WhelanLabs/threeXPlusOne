@@ -138,7 +138,7 @@ public class Utils {
 		if(pre.getXAValue() == post.getXAValue() && before_b_plus_c == after_b_plus_c ) {
 			System.out.println("### bingo ###");
 		}
-		else if (pre.getXAValue() >= post.getXAValue() && pre.getXCValue() >= post.getXAValue()) {
+		else if (pre.getXAValue() >= post.getXAValue() && pre.getXCValue() >= post.getXCValue()) {
 			System.out.println("### dead end ###");
 			result = true;
 		} else if (pre.getXAValue() > post.getXAValue()) {
