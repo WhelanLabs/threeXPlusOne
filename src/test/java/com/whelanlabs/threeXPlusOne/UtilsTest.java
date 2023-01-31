@@ -58,4 +58,14 @@ public class UtilsTest {
 		assert("[1, 0, 1, 1]".equals(nTenString)): nTenString;
 
 	}
+	
+	@Test
+	public void get3XPlusOne_X0011_partB_success() {
+		List<Integer> startingBits = Arrays.asList(0, 0, 1, 1);
+		TailArray startingTailArray = new TailArray(startingBits);
+		TailArray partBTailArray = Utils.get3XPlusOne(startingTailArray);
+		TailArray result = Utils.get3XPlusOne(partBTailArray);
+		fail("failure is always an option");
+
+	}
 }
