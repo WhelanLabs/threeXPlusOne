@@ -21,7 +21,10 @@ public class Utils {
 		twoXPlusOneList.add(1);
 
 		Integer r = 0;
-		Double b = input.getXBValue();
+		
+		//Double b = input.getXBValue();
+		Double b = 3*input.getXBValue();
+		
 		Integer shifts = 0;  //input.getShifts();
 
 		List<Integer> temp = new ArrayList<>();
@@ -71,9 +74,11 @@ public class Utils {
 		}
 		
 		
-		if (twoXPlusOneList.get(0) == 1) {
+		// if (twoXPlusOneList.get(0) == 1) {
+		if (r == 1) {
 			//b += 1;
-			b+= Math.pow(2, input.getTail().size() + input.getShifts());
+			double bIncrement = Math.pow(2, input.getTail().size());
+			b+= bIncrement;
 		}
 
 		List<Integer> reversedResultArray = new ArrayList<>();

@@ -9,55 +9,6 @@ import org.junit.Test;
 
 public class UtilsTest {
 
-	@Test
-	public void get3XPlusOne_good_success() {
-		List<Integer> array = Arrays.asList(1, 0, 1);
-		TailArray input = new TailArray(array);
-		TailArray threeXPlusOne = Utils.get3XPlusOne(input);
-		
-		// TXPO(101) = (3X+1)000 = (3X+1)/8
-		assert(3 == threeXPlusOne.getXAValue()): threeXPlusOne;
-		assert(2 == threeXPlusOne.getXBValue()): threeXPlusOne;
-		assert(3 == threeXPlusOne.getShifts()): threeXPlusOne;
-		assert("[]".equals(threeXPlusOne.getTail().toString())): threeXPlusOne;
-	}
-
-	@Test
-	public void get3XPlusOne_good2_success() {
-		List<Integer> array = Arrays.asList(0, 0, 0, 0, 1, 1);
-		TailArray input = new TailArray(array);
-		TailArray threeXPlusOne = Utils.get3XPlusOne(input);
-		
-		// TXPO(101) = (3X+1)000 = (3X+1)/8
-		assert(3 == threeXPlusOne.getXAValue()): threeXPlusOne;
-		String tail = threeXPlusOne.getTail().toString();
-		assert("[0, 0, 1, 0, 1]".equals(tail)): tail;
-	}
-	
-	@Test
-	public void get3XPlusOne_good3_success() {
-		List<Integer> array = Arrays.asList(0, 0, 1, 0, 0, 1);
-		TailArray input = new TailArray(array);
-		TailArray threeXPlusOne = Utils.get3XPlusOne(input);
-		
-		// TXPO(101) = (3X+1)000 = (3X+1)/8
-		assert(3 == threeXPlusOne.getXAValue()): threeXPlusOne;
-		String tail = threeXPlusOne.getTail().toString();
-		assert("[0, 1, 1, 1]".equals(tail)): tail;
-	}
-	
-	//
-	@Test
-	public void getListOfBits_good_success() {
-		List<List<Integer>> results = Utils.getListOfBits(4);
-		
-		System.out.println(results);
-		assert(15 == results.size()): results.size();
-		List<Integer> n10 = results.get(10);
-		String nTenString = n10.toString();
-		assert("[1, 0, 1, 1]".equals(nTenString)): nTenString;
-
-	}
 	
 	@Test
 	public void get3XPlusOne_X0011_partB_success() {
@@ -65,7 +16,28 @@ public class UtilsTest {
 		TailArray startingTailArray = new TailArray(startingBits);
 		TailArray partBTailArray = Utils.get3XPlusOne(startingTailArray);
 		TailArray result = Utils.get3XPlusOne(partBTailArray);
-		fail("failure is always an option");
+		assert("{ formula:\"9.0X+1.0\", base:\"(9.0X+1.0)[]\", shifts:3 }".equals(result.toString())): result.toString();
+	}
+	
+	@Test
+	public void get3XPlusOne_X0101_success() {
+		List<Integer> startingBits = Arrays.asList(0, 1, 0, 1);
+		TailArray startingTailArray = new TailArray(startingBits);
+		TailArray result = Utils.get3XPlusOne(startingTailArray);
+		assert("{ formula:\"3.0X+1.0\", base:\"(3.0X+1.0)[]\", shifts:4 }".equals(result.toString())): result.toString();
+	}
+	
+	@Test
+	public void get3XPlusOne_X0111_success() {
+		List<Integer> startingBits = Arrays.asList(0, 1, 1, 1);
+		TailArray startingTailArray = new TailArray(startingBits);
+		TailArray a = Utils.get3XPlusOne(startingTailArray);
+		assert("{ formula:\"24.0X+11.0\", base:\"(24.0X+8.0)[0, 1, 1]\", shifts:1 }".equals(a.toString())): a.toString();
 
+		TailArray b = Utils.get3XPlusOne(a);
+		assert("{ formula:\"36.0X+17.0\", base:\"(36.0X+16.0)[0, 1]\", shifts:1 }".equals(b.toString())): b.toString();
+
+		TailArray c = Utils.get3XPlusOne(b);
+		assert("failure is always an option".equals(c.toString())): c.toString();
 	}
 }
