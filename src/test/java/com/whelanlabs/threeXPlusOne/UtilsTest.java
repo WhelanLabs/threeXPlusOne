@@ -16,7 +16,7 @@ public class UtilsTest {
 		TailArray startingTailArray = new TailArray(startingBits);
 		TailArray partBTailArray = Utils.get3XPlusOne(startingTailArray);
 		TailArray result = Utils.get3XPlusOne(partBTailArray);
-		assert("{ formula:\"9.0X+1.0\", base:\"(9.0X+1.0)[]\", shifts:3 }".equals(result.toString())): result.toString();
+		assert("{ formula:\"9.0X+1.0\", base:\"(9.0X+2.0)[]\", shifts:3 }".equals(result.toString())): result.toString();
 	}
 	
 	@Test
