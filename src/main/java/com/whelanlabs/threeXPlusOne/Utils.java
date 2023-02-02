@@ -74,9 +74,14 @@ public class Utils {
 		}
 		
 		
-		// if (twoXPlusOneList.get(0) == 1) {
+		// if top digit addition has a carryover, add it to b-value.
 		if (r == 1) {
 			//b += 1;
+			double bIncrement = Math.pow(2, input.getTail().size());
+			b+= bIncrement;
+		}
+		// If the upshifted bit is a one, add it to b-value
+		if(1 == oneXList.get(0)) {
 			double bIncrement = Math.pow(2, input.getTail().size());
 			b+= bIncrement;
 		}
