@@ -144,18 +144,30 @@ public class Utils {
 		double before_b_plus_c = pre.getXBValue() + pre.getTailValue();
 		double after_b_plus_c = post.getXBValue() + post.getTailValue();
 
-		
-		if(pre.getXAValue() == post.getXAValue() && before_b_plus_c == after_b_plus_c ) {
-			System.out.println("### bingo ###");
+		Double x = 0.5;
+		if(pre.getXCValue() != post.getXCValue()) {
+			x = ((post.getXCValue() - pre.getXCValue())/(pre.getXAValue() - post.getXAValue()));
 		}
-		else if (pre.getXAValue() >= post.getXAValue() && pre.getXCValue() >= post.getXCValue()) {
+		
+		
+		if(x%1 == 0 && x >=0) {
+			System.out.println("### bingo ###");
+			System.out.println("pre = " + pre);
+			System.out.println("X = " + x);
+			System.exit(0);
+		}
+//		else if(pre.getXAValue() == post.getXAValue() && before_b_plus_c == after_b_plus_c ) {
+//			System.out.println("### bingo2 ###");
+//		}
+		else if (pre.getXAValue() > post.getXAValue() && pre.getXCValue() > post.getXCValue()) {
 			System.out.println("### dead end ###");
 			result = true;
 		} else if (pre.getXAValue() > post.getXAValue()) {
-			System.out.println("### future dead end ###");
+			System.out.println("### possible future dead end ###");
 			// result = null;
-		} else {
-			System.out.println("### not smaller ###");
+		}
+		else {
+			System.out.println("### unknown ###");
 		}
 
 		return result;
