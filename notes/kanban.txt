@@ -21,14 +21,15 @@
   and have it include tailstring value.
   (b = carry_over + tailstring_value.)
   
+* run iterative tests on living branches
+  
 ##########################################################
 # WIP
 ##########################################################
 
-* check program results and fix (cannot be right?)
-  - X0101 seems wrong (3X+1, not 3x+0)
+* Switch to use BigDecimal instead of Double.
 
-* run iterative tests on living branches
+* Add logging support
 
 
 ##########################################################
