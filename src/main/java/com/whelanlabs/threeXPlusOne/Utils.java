@@ -2,7 +2,9 @@ package com.whelanlabs.threeXPlusOne;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Utils {
 
@@ -14,7 +16,7 @@ public class Utils {
 
 	public static TailArray get3XPlusOne(TailArray input) {
 		
-		System.out.println("input = " + input);
+		// System.out.println("input = " + input);
 		
 		List<Integer> oneXList = input.getTail();
 		List<Integer> twoXPlusOneList = input.getTail();
@@ -22,7 +24,6 @@ public class Utils {
 
 		Integer r = 0;
 		
-		//Double b = input.getXBValue();
 		Double b = 3*input.getXBValue();
 		
 		Integer shifts = 0;  //input.getShifts();
@@ -111,7 +112,7 @@ public class Utils {
 		
 
 		TailArray result = new TailArray(post_a, post_b, resultArray, shifts);
-		System.out.println("result = " + result);
+		//System.out.println("result = " + result);
 
 		return result;
 	}
@@ -156,18 +157,14 @@ public class Utils {
 			System.out.println("X = " + x);
 			System.exit(0);
 		}
-//		else if(pre.getXAValue() == post.getXAValue() && before_b_plus_c == after_b_plus_c ) {
-//			System.out.println("### bingo2 ###");
-//		}
 		else if (pre.getXAValue() > post.getXAValue() && pre.getXCValue() > post.getXCValue()) {
-			System.out.println("### dead end ###");
+			//System.out.println("### dead end ###");
 			result = true;
 		} else if (pre.getXAValue() > post.getXAValue()) {
-			System.out.println("### possible future dead end ###");
-			// result = null;
+			//System.out.println("### possible future dead end ###");
 		}
 		else {
-			System.out.println("### unknown ###");
+			//System.out.println("### unknown ###");
 		}
 
 		return result;
