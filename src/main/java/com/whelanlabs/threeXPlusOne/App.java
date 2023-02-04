@@ -18,6 +18,7 @@ public class App {
 	public static void main() {
 		logger.info("Hello World!");
 		Integer length = 4;
+		Integer i = 0;
 
 		System.out.println("length = " + length);
 
@@ -25,7 +26,8 @@ public class App {
 		do {
 			List<List<Integer>> nextBatch = new ArrayList<>();
 			
-			logger.info("################################");
+			i++;
+			logger.info("##### batch " + i + " Batch size: " + listOfListOfBits.size() + ") ###");
 			
 			for (List<Integer> listOfBits : listOfListOfBits) {
 				if (1 == listOfBits.get(listOfBits.size() - 1)) {
@@ -41,10 +43,10 @@ public class App {
 							// System.out.println("currentBits = " + startingTailArray.getTail());
 
 							TailArray resultingTailArray = Utils.get3XPlusOne(startingTailArray);
-							isSmaller = Utils.isSmaller(startingPoint, resultingTailArray);
+							isSmaller = Utils.isDeadEnd(startingPoint, resultingTailArray);
 							
-							if(resultingTailArray.getTail().size()==1 && !isSmaller) {
-								logger.info("Adding new canidate for : " + listOfBits);
+							if(resultingTailArray.getTail().size()<=1 && !isSmaller) {
+								logger.debug("Adding new child canidates for: " + listOfBits);
 								
 								List<Integer> leadingOne = new ArrayList<>();
 								leadingOne.add(1);
@@ -55,6 +57,8 @@ public class App {
 								leadingZero.add(0);
 								leadingZero.addAll(listOfBits);
 								nextBatch.add(leadingZero);
+								
+								break;
 							}
 							
 							startingTailArray = resultingTailArray;

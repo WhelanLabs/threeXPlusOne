@@ -11,6 +11,11 @@ import org.apache.logging.log4j.Logger;
 
 public class Utils {
 	private static final Logger logger = LogManager.getLogger(Utils.class);
+	
+	private static String _preRoot = "-";
+	private static Set<String> currentTails = new HashSet<>();
+	private static Set<String> deadTails = new HashSet<>();
+
 
 	private static Character CHAR_ZERO = (Character) '0';
 
@@ -20,7 +25,7 @@ public class Utils {
 
 	public static TailArray get3XPlusOne(TailArray input) {
 		
-		logger.debug("input = " + input);
+		//logger.debug("input = " + input);
 		
 		List<Integer> oneXList = input.getTail();
 		List<Integer> twoXPlusOneList = input.getTail();
@@ -116,7 +121,7 @@ public class Utils {
 		
 
 		TailArray result = new TailArray(post_a, post_b, resultArray, shifts);
-		logger.debug("result = " + result);
+		//logger.debug("result = " + result);
 
 		return result;
 	}
@@ -143,7 +148,15 @@ public class Utils {
 		return results;
 	}
 
-	public static Boolean isSmaller(TailArray pre, TailArray post) {
+	public static Boolean isDeadEnd(TailArray pre, TailArray post) {
+		
+		if (_preRoot.equals(pre.getTail().toString())) {
+			currentTails.add(post.getTail().toString().substring(1));
+		}
+		else {
+			currentTails = new HashSet<>();
+		}
+		
 		Boolean result = false;
 
 		double before_b_plus_c = pre.getXBValue() + pre.getTailValue();
@@ -156,13 +169,21 @@ public class Utils {
 		
 		
 		if(x%1 == 0 && x >=0) {
-			logger.info("### bingo ###");
-			logger.info("pre = " + pre);
-			logger.info("X = " + x);
+			System.out.println("### bingo ###");
+			System.out.println("pre = " + pre);
+			System.out.println("X = " + x);
 			System.exit(0);
 		}
+		else if (deadTails.contains(post.getTail().toString().substring(1))) {
+			logger.info("### dead end (dead tail) - pre = " + pre + ", post = " + post);
+			deadTails.addAll(currentTails);
+			deadTails.add(pre.getTail().toString().substring(1));
+			result = true;
+		}
 		else if (pre.getXAValue() > post.getXAValue() && pre.getXCValue() > post.getXCValue()) {
-			logger.debug("### dead end - pre = " + pre);
+			logger.info("### dead end (too small) - pre = " + pre + ", post = " + post);
+			deadTails.addAll(currentTails);
+			deadTails.add(pre.getTail().toString().substring(1));
 			result = true;
 		} else if (pre.getXAValue() > post.getXAValue()) {
 			//System.out.println("### possible future dead end ###");

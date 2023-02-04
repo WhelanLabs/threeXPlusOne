@@ -23,17 +23,21 @@
   
 * run iterative tests on living branches
   
+* Add logging support
+
+* Check for dead tailstrings.
+
 ##########################################################
 # WIP
 ##########################################################
 
-* Add logging support
+
 
 * complete get3XPlusOne_X1111_success test
 
-* Switch to use BigDecimal instead of Double.
+* Switch to use BigDecimal instead of Double, and BigInteger where appropiate.
 
-* Check for dead tailstrings.
+
 
 
 ##########################################################

@@ -9,11 +9,9 @@
         </File>
     </Appenders>
     <Loggers>
-	    <Logger name="org.whelanlabs" level="debug" additivity="false">
-            <AppenderRef ref="FileAppender"/>
-        </Logger>
         <Root level="info">
             <AppenderRef ref="ConsoleAppender" />
+			<AppenderRef ref="FileAppender"/>
         </Root>
     </Loggers>
 </Configuration>
