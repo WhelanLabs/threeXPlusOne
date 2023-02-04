@@ -34,18 +34,18 @@ public class App {
 					
 					// skip cases where the starting value is 1
 					if(1 != listOfBits.stream().mapToInt(Integer::intValue).sum()) {
-						Boolean isSmaller = false;
+						Boolean isDeadEnd = false;
 						List<Integer> currentBits = listOfBits;
 						TailArray startingPoint = new TailArray(currentBits);
 						TailArray startingTailArray = new TailArray(currentBits);
 
-						while (startingTailArray.getTail().size() > 0 && null != isSmaller && isSmaller == false) {
+						while (startingTailArray.getTail().size() > 0 && null != isDeadEnd && isDeadEnd == false) {
 							// System.out.println("currentBits = " + startingTailArray.getTail());
 
 							TailArray resultingTailArray = Utils.get3XPlusOne(startingTailArray);
-							isSmaller = Utils.isDeadEnd(startingPoint, resultingTailArray);
+							isDeadEnd = Utils.isDeadEnd(startingPoint, resultingTailArray);
 							
-							if(resultingTailArray.getTail().size()<=1 && !isSmaller) {
+							if(resultingTailArray.getTail().size()<=1 && !isDeadEnd) {
 								logger.debug("Adding new child canidates for: " + listOfBits);
 								
 								List<Integer> leadingOne = new ArrayList<>();

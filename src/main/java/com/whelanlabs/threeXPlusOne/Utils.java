@@ -1,5 +1,7 @@
 package com.whelanlabs.threeXPlusOne;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -11,6 +13,10 @@ import org.apache.logging.log4j.Logger;
 
 public class Utils {
 	private static final Logger logger = LogManager.getLogger(Utils.class);
+	
+	private static final BigInteger zero = BigInteger.valueOf(0);
+	private static final BigInteger two = BigInteger.valueOf(2);
+	private static final BigInteger three = BigInteger.valueOf(3);
 	
 	private static String _preRoot = "-";
 	private static Set<String> currentTails = new HashSet<>();
@@ -33,9 +39,9 @@ public class Utils {
 
 		Integer r = 0;
 		
-		Double b = 3*input.getXBValue();
+		BigInteger b =  input.getXBValue().multiply(BigInteger.valueOf(3));
 		
-		Integer shifts = 0;  //input.getShifts();
+		Integer shifts = 0;
 
 		List<Integer> temp = new ArrayList<>();
 		for (int i = oneXList.size() - 1; i >= 0; i--) {
@@ -87,13 +93,13 @@ public class Utils {
 		// if top digit addition has a carryover, add it to b-value.
 		if (r == 1) {
 			//b += 1;
-			double bIncrement = Math.pow(2, input.getTail().size());
-			b+= bIncrement;
+			BigInteger bIncrement =  two.pow(input.getTail().size());
+			b = b.add(bIncrement);
 		}
 		// If the upshifted bit is a one, add it to b-value
 		if(1 == oneXList.get(0)) {
-			double bIncrement = Math.pow(2, input.getTail().size());
-			b+= bIncrement;
+			BigInteger bIncrement =  two.pow(input.getTail().size());
+			b = b.add(bIncrement);
 		}
 
 		List<Integer> reversedResultArray = new ArrayList<>();
@@ -116,8 +122,8 @@ public class Utils {
 			resultArray.add(value);
 		}
 
-		double post_a = input.getXAValue() * 3 / Math.pow(2, shifts);
-		double post_b = b / Math.pow(2, shifts);
+		BigInteger post_a = three.multiply(input.getXAValue()).divide(two.pow(shifts));
+		BigInteger post_b = b.divide(two.pow(shifts));
 		
 
 		TailArray result = new TailArray(post_a, post_b, resultArray, shifts);
@@ -159,33 +165,50 @@ public class Utils {
 		
 		Boolean result = false;
 
-		double before_b_plus_c = pre.getXBValue() + pre.getTailValue();
-		double after_b_plus_c = post.getXBValue() + post.getTailValue();
+		BigInteger before_b_plus_c = pre.getXBValue().add(pre.getTailValue());
+		BigInteger after_b_plus_c = post.getXBValue().add(post.getTailValue());
 
-		Double x = 0.5;
+		Double x = -0.5;
 		if(pre.getXCValue() != post.getXCValue()) {
-			x = ((post.getXCValue() - pre.getXCValue())/(pre.getXAValue() - post.getXAValue()));
+			Double top = (post.getXCValue().subtract(pre.getXCValue())).doubleValue();
+			Double bottom = (pre.getXAValue().subtract(post.getXAValue())).doubleValue();
+			x = top/bottom;
+		}
+		if( x%1==0 && x >= 0 ) {
+			
+			// do a more expensive check...
+			BigDecimal top = new BigDecimal(post.getXCValue().subtract(pre.getXCValue()));
+			BigDecimal bottom = new BigDecimal(pre.getXAValue().subtract(post.getXAValue()));
+			BigDecimal xx = top.divide(bottom);
+			
+			if(xx.remainder(BigDecimal.ONE).compareTo(BigDecimal.ZERO) == 0) {
+				System.out.println("### bingo ###");
+				System.out.println("pre = " + pre);
+				System.out.println("post = " + post);
+				System.out.println("X = " + x);
+				
+				System.out.println("post.getXCValue() = " + post.getXCValue());
+				System.out.println("pre.getXCValue() = " + pre.getXCValue());
+				System.out.println("pre.getXAValue() = " + pre.getXAValue());
+				System.out.println("post.getXAValue() = " + post.getXAValue());
+				
+				System.exit(0);
+			}
 		}
 		
 		
-		if(x%1 == 0 && x >=0) {
-			System.out.println("### bingo ###");
-			System.out.println("pre = " + pre);
-			System.out.println("X = " + x);
-			System.exit(0);
-		}
-		else if (deadTails.contains(post.getTail().toString().substring(1))) {
+		if (deadTails.contains(post.getTail().toString().substring(1))) {
 			logger.info("### dead end (dead tail) - pre = " + pre + ", post = " + post);
 			deadTails.addAll(currentTails);
 			deadTails.add(pre.getTail().toString().substring(1));
 			result = true;
 		}
-		else if (pre.getXAValue() > post.getXAValue() && pre.getXCValue() > post.getXCValue()) {
+		else if (pre.getXAValue().compareTo(post.getXAValue())>0  && pre.getXCValue().compareTo(post.getXCValue())>0 ) {
 			logger.info("### dead end (too small) - pre = " + pre + ", post = " + post);
 			deadTails.addAll(currentTails);
 			deadTails.add(pre.getTail().toString().substring(1));
 			result = true;
-		} else if (pre.getXAValue() > post.getXAValue()) {
+		} else if (pre.getXAValue().compareTo(post.getXAValue()) > 0 ) {
 			//System.out.println("### possible future dead end ###");
 		}
 		else {

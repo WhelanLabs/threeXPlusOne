@@ -2,6 +2,7 @@ package com.whelanlabs.threeXPlusOne;
 
 import static org.junit.Assert.*;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,6 +10,10 @@ import org.junit.Test;
 
 public class TailArrayTest {
 
+	private final BigInteger zero = BigInteger.valueOf(0);
+	private final BigInteger one = BigInteger.valueOf(1);
+	private final BigInteger five = BigInteger.valueOf(5);
+	
 	@Test
 	public void new_good_success() {
 		List<Integer> array = Arrays.asList(1, 0, 1);
@@ -36,14 +41,14 @@ public class TailArrayTest {
 	public void getXAValue_good_success() {
 		List<Integer> array = Arrays.asList(1, 0, 1);
 		TailArray tailArray = new TailArray(array);
-		assert(1 == tailArray.getXAValue());
+		assert(tailArray.getXAValue().compareTo(one) == 0);
 	}
 	
 	@Test
 	public void getXBValue_good_success() {
 		List<Integer> array = Arrays.asList(1, 0, 1);
 		TailArray tailArray = new TailArray(array);
-		assert(0 == tailArray.getXBValue());
+		assert(tailArray.getXBValue().compareTo(zero) == 0);
 	}
 	
 	@Test
@@ -65,8 +70,8 @@ public class TailArrayTest {
 	public void getValue_is5_is5() {
 		List<Integer> array = Arrays.asList(1, 0, 1);
 		TailArray tailArray = new TailArray(array);
-		Double tailValue = tailArray.getTailValue();
-		assert(5==tailValue):tailValue;
+		BigInteger tailValue = tailArray.getTailValue();
+		assert(five.compareTo(tailValue)==0 ):tailValue;
 	}
 	
 	@Test

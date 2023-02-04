@@ -27,15 +27,17 @@
 
 * Check for dead tailstrings.
 
+* Switch to use BigDecimal instead of Double, and BigInteger where appropiate.
+
 ##########################################################
 # WIP
 ##########################################################
 
-
+* check for smaller dead tail matches.
 
 * complete get3XPlusOne_X1111_success test
 
-* Switch to use BigDecimal instead of Double, and BigInteger where appropiate.
+
 
 
 

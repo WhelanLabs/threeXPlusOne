@@ -1,15 +1,19 @@
 package com.whelanlabs.threeXPlusOne;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TailArray {
 
+	private static final BigInteger two = BigInteger.valueOf(2);
+	private static final BigInteger zero = BigInteger.valueOf(0);
+	
 	private List<Integer> _tail;
-	private Double _tailValue;
+	private BigInteger _tailValue;
 	private Integer _shifts;
-	private Double _xaValue;
-	private Double _xbValue;
+	private BigInteger _xaValue;
+	private BigInteger _xbValue;
 	private Boolean _smaller = false;
 
 	public TailArray(List<Integer> tail) {
@@ -30,50 +34,56 @@ public class TailArray {
 		_tail = tail;
 		_shifts = 0;
 		// The initial leading X value is: AX+B = 1X+0
-		_xaValue = Math.pow(2, tail.size());
-		_xbValue = 0d;
+		_xaValue = two.pow(tail.size());
+		_xbValue = zero;
 
 		_tailValue = getTailValue();
 	}
 
-	public TailArray(Double a, Double b, List<Integer> tail, Integer shifts) {
+	public TailArray(BigInteger a, BigInteger b, List<Integer> tail, Integer shifts) {
 		_tail = tail;
 		_shifts = shifts;
 		_xaValue = a;
 		_xbValue = b;
-		_tailValue = getTailValue();
+		_tailValue = getTailValue(tail);
 	}
 
-	public Double getTailValue() {
-		Double result = 0d;
-		for (int i = 0; i < _tail.size(); i++) {
-			int pos = _tail.size() - i - 1;
-			if (_tail.get(i) == 1) {
-				result += Math.pow(2, pos);
+	public BigInteger getTailValue() {
+//		BigInteger result = zero;
+//		for (int i = 0; i < _tail.size(); i++) {
+//			int pos = _tail.size() - i - 1;
+//			if (_tail.get(i) == 1) {
+//				result.add(two.pow(pos));
+//			}
+//		}
+		return getTailValue(_tail);
+	}
+
+	public static BigInteger getTailValue(List<Integer> tail) {
+		BigInteger result = zero;
+		
+		for (int i = tail.size() - 1; i >= 0; i--) {
+			int pos = tail.size() - i - 1;
+			if(tail.get(pos) == 1) {
+				result = result.add(two.pow(i));
 			}
 		}
 		return result;
 	}
 
-	public static Integer getTailValue(List<Integer> tail) {
-		Integer result = 0;
-		for (int i = tail.size() - 1; i >= 0; i--) {
-			int pos = tail.size() - i - 1;
-			result += 2 ^ pos;
-		}
-		return result;
-	}
-
-	public Double getXAValue() {
+	public BigInteger getXAValue() {
 		return _xaValue;
 	}
 
-	public Double getXBValue() {
+	public BigInteger getXBValue() {
 		return _xbValue;
 	}
 
-	public Double getXCValue() {
-		return getXBValue() + getTailValue();
+	public BigInteger getXCValue() {
+		BigInteger b = getXBValue();
+		BigInteger t = getTailValue();
+		BigInteger result = b.add(t);
+		return result;
 	}
 
 	public Integer getShifts() {
@@ -87,7 +97,7 @@ public class TailArray {
 	}
 
 	public String toString() {
-		return "{ formula:\"" + _xaValue + "X+" + getXCValue() + "\", base:\"(" + _xaValue + "X+" + _xbValue + ")"
+		return "{ formula:\"" + _xaValue + "X+" + getXCValue().toString() + "\", base:\"(" + _xaValue + "X+" + _xbValue + ")"
 				+ _tail + "\", shifts:" + _shifts + " }";
 	}
 
