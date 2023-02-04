@@ -6,7 +6,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Utils {
+	private static final Logger logger = LogManager.getLogger(Utils.class);
 
 	private static Character CHAR_ZERO = (Character) '0';
 
@@ -16,7 +20,7 @@ public class Utils {
 
 	public static TailArray get3XPlusOne(TailArray input) {
 		
-		// System.out.println("input = " + input);
+		logger.debug("input = " + input);
 		
 		List<Integer> oneXList = input.getTail();
 		List<Integer> twoXPlusOneList = input.getTail();
@@ -112,7 +116,7 @@ public class Utils {
 		
 
 		TailArray result = new TailArray(post_a, post_b, resultArray, shifts);
-		//System.out.println("result = " + result);
+		logger.debug("result = " + result);
 
 		return result;
 	}
@@ -152,13 +156,13 @@ public class Utils {
 		
 		
 		if(x%1 == 0 && x >=0) {
-			System.out.println("### bingo ###");
-			System.out.println("pre = " + pre);
-			System.out.println("X = " + x);
+			logger.info("### bingo ###");
+			logger.info("pre = " + pre);
+			logger.info("X = " + x);
 			System.exit(0);
 		}
 		else if (pre.getXAValue() > post.getXAValue() && pre.getXCValue() > post.getXCValue()) {
-			//System.out.println("### dead end ###");
+			logger.debug("### dead end - pre = " + pre);
 			result = true;
 		} else if (pre.getXAValue() > post.getXAValue()) {
 			//System.out.println("### possible future dead end ###");

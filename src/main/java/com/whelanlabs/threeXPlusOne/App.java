@@ -3,14 +3,20 @@ package com.whelanlabs.threeXPlusOne;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 public class App {
+	
+	private static final Logger logger = LogManager.getLogger(App.class);
+	
 	private App() {
 		// static class
 	}
 
 	public static void main() {
-		System.out.println("Hello World!");
+		logger.info("Hello World!");
 		Integer length = 4;
 
 		System.out.println("length = " + length);
@@ -19,7 +25,7 @@ public class App {
 		do {
 			List<List<Integer>> nextBatch = new ArrayList<>();
 			
-			System.out.println("################################");
+			logger.info("################################");
 			
 			for (List<Integer> listOfBits : listOfListOfBits) {
 				if (1 == listOfBits.get(listOfBits.size() - 1)) {
@@ -38,7 +44,7 @@ public class App {
 							isSmaller = Utils.isSmaller(startingPoint, resultingTailArray);
 							
 							if(resultingTailArray.getTail().size()==1 && !isSmaller) {
-								System.out.println("Adding new canidate for : " + listOfBits);
+								logger.info("Adding new canidate for : " + listOfBits);
 								
 								List<Integer> leadingOne = new ArrayList<>();
 								leadingOne.add(1);

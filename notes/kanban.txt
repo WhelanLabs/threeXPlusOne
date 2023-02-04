@@ -27,9 +27,13 @@
 # WIP
 ##########################################################
 
+* Add logging support
+
+* complete get3XPlusOne_X1111_success test
+
 * Switch to use BigDecimal instead of Double.
 
-* Add logging support
+* Check for dead tailstrings.
 
 
 ##########################################################

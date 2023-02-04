@@ -5,9 +5,12 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 public class UtilsTest {
+	private static final Logger logger = LogManager.getLogger(UtilsTest.class);
 
 	@Test
 	public void get3XPlusOne_X0001_success() {
