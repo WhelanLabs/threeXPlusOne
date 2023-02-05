@@ -17,7 +17,7 @@ public class UtilsTest {
 		List<Integer> startingBits = Arrays.asList(0, 0, 0, 1);
 		TailArray startingTailArray = new TailArray(startingBits);
 		TailArray result = Utils.get3XPlusOne(startingTailArray);
-		assert("{ formula:\"12.0X+1.0\", base:\"(12.0X+0.0)[0, 1]\", shifts:2 }".equals(result.toString())): result.toString();
+		assert("{ formula:\"12X+1\", base:\"(12X+0)[0, 1]\", shifts:2 }".equals(result.toString())): result.toString();
 	}
 	
 	@Test
@@ -25,10 +25,10 @@ public class UtilsTest {
 		List<Integer> startingBits = Arrays.asList(0, 0, 1, 1);
 		TailArray startingTailArray = new TailArray(startingBits);
 		TailArray a = Utils.get3XPlusOne(startingTailArray);
-		assert("{ formula:\"24.0X+5.0\", base:\"(24.0X+0.0)[1, 0, 1]\", shifts:1 }".equals(a.toString())): a.toString();
+		assert("{ formula:\"24X+5\", base:\"(24X+0)[1, 0, 1]\", shifts:1 }".equals(a.toString())): a.toString();
 
 		TailArray b = Utils.get3XPlusOne(a);
-		assert("{ formula:\"9.0X+2.0\", base:\"(9.0X+2.0)[]\", shifts:3 }".equals(b.toString())): b.toString();
+		assert("{ formula:\"9X+2\", base:\"(9X+2)[]\", shifts:3 }".equals(b.toString())): b.toString();
 	}
 	
 	@Test
@@ -36,7 +36,7 @@ public class UtilsTest {
 		List<Integer> startingBits = Arrays.asList(0, 1, 0, 1);
 		TailArray startingTailArray = new TailArray(startingBits);
 		TailArray result = Utils.get3XPlusOne(startingTailArray);
-		assert("{ formula:\"3.0X+1.0\", base:\"(3.0X+1.0)[]\", shifts:4 }".equals(result.toString())): result.toString();
+		assert("{ formula:\"3X+1\", base:\"(3X+1)[]\", shifts:4 }".equals(result.toString())): result.toString();
 	}
 	
 	@Test
@@ -44,13 +44,13 @@ public class UtilsTest {
 		List<Integer> startingBits = Arrays.asList(0, 1, 1, 1);
 		TailArray startingTailArray = new TailArray(startingBits);
 		TailArray a = Utils.get3XPlusOne(startingTailArray);
-		assert("{ formula:\"24.0X+11.0\", base:\"(24.0X+8.0)[0, 1, 1]\", shifts:1 }".equals(a.toString())): a.toString();
+		assert("{ formula:\"24X+11\", base:\"(24X+8)[0, 1, 1]\", shifts:1 }".equals(a.toString())): a.toString();
 
 		TailArray b = Utils.get3XPlusOne(a);
-		assert("{ formula:\"36.0X+17.0\", base:\"(36.0X+16.0)[0, 1]\", shifts:1 }".equals(b.toString())): b.toString();
+		assert("{ formula:\"36X+17\", base:\"(36X+16)[0, 1]\", shifts:1 }".equals(b.toString())): b.toString();
 
 		TailArray c = Utils.get3XPlusOne(b);
-		assert("{ formula:\"27.0X+13.0\", base:\"(27.0X+13.0)[]\", shifts:2 }".equals(c.toString())): c.toString();
+		assert("{ formula:\"27X+13\", base:\"(27X+13)[]\", shifts:2 }".equals(c.toString())): c.toString();
 	}
 	
 	@Test
@@ -58,7 +58,7 @@ public class UtilsTest {
 		List<Integer> startingBits = Arrays.asList(1, 0, 0, 1);
 		TailArray startingTailArray = new TailArray(startingBits);
 		TailArray result = Utils.get3XPlusOne(startingTailArray);
-		assert("{ formula:\"12.0X+7.0\", base:\"(12.0X+4.0)[1, 1]\", shifts:2 }".equals(result.toString())): result.toString();
+		assert("{ formula:\"12X+7\", base:\"(12X+4)[1, 1]\", shifts:2 }".equals(result.toString())): result.toString();
 	}
 	
 	@Test
@@ -66,13 +66,13 @@ public class UtilsTest {
 		List<Integer> startingBits = Arrays.asList(1, 0, 1, 1);
 		TailArray startingTailArray = new TailArray(startingBits);
 		TailArray a = Utils.get3XPlusOne(startingTailArray);
-		assert("{ formula:\"24.0X+17.0\", base:\"(24.0X+16.0)[0, 0, 1]\", shifts:1 }".equals(a.toString())): a.toString();
+		assert("{ formula:\"24X+17\", base:\"(24X+16)[0, 0, 1]\", shifts:1 }".equals(a.toString())): a.toString();
 
 		TailArray b = Utils.get3XPlusOne(a);
-		assert("{ formula:\"18.0X+13.0\", base:\"(18.0X+12.0)[1]\", shifts:2 }".equals(b.toString())): b.toString();
+		assert("{ formula:\"18X+13\", base:\"(18X+12)[1]\", shifts:2 }".equals(b.toString())): b.toString();
 
 		TailArray c = Utils.get3XPlusOne(b);
-		assert("{ formula:\"27.0X+20.0\", base:\"(27.0X+20.0)[]\", shifts:1 }".equals(c.toString())): c.toString();
+		assert("{ formula:\"27X+20\", base:\"(27X+20)[]\", shifts:1 }".equals(c.toString())): c.toString();
 	}
 	
 	@Test
@@ -80,7 +80,7 @@ public class UtilsTest {
 		List<Integer> startingBits = Arrays.asList(1, 1, 0, 1);
 		TailArray startingTailArray = new TailArray(startingBits);
 		TailArray result = Utils.get3XPlusOne(startingTailArray);
-		assert("{ formula:\"6.0X+5.0\", base:\"(6.0X+4.0)[1]\", shifts:3 }".equals(result.toString())): result.toString();
+		assert("{ formula:\"6X+5\", base:\"(6X+4)[1]\", shifts:3 }".equals(result.toString())): result.toString();
 	}
 	
 	@Test
@@ -88,15 +88,15 @@ public class UtilsTest {
 		List<Integer> startingBits = Arrays.asList(1, 1, 1, 1);
 		TailArray startingTailArray = new TailArray(startingBits);
 		TailArray a = Utils.get3XPlusOne(startingTailArray);
-		assert("???".equals(a.toString())): a.toString();
+		assert("{ formula:\"24X+23\", base:\"(24X+16)[1, 1, 1]\", shifts:1 }".equals(a.toString())): a.toString();
 
 		TailArray b = Utils.get3XPlusOne(a);
-		assert("???".equals(b.toString())): b.toString();
+		assert("{ formula:\"36X+35\", base:\"(36X+32)[1, 1]\", shifts:1 }".equals(b.toString())): b.toString();
 
 		TailArray c = Utils.get3XPlusOne(b);
-		assert("???".equals(c.toString())): c.toString();
+		assert("{ formula:\"54X+53\", base:\"(54X+52)[1]\", shifts:1 }".equals(c.toString())): c.toString();
 		
 		TailArray d = Utils.get3XPlusOne(c);
-		assert("???".equals(d.toString())): d.toString();
+		assert("{ formula:\"81X+80\", base:\"(81X+80)[]\", shifts:1 }".equals(d.toString())): d.toString();
 	}
 }

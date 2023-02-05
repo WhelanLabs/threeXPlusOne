@@ -29,16 +29,19 @@
 
 * Switch to use BigDecimal instead of Double, and BigInteger where appropiate.
 
+* use modulus instead of division
+
+* complete 4-bit tests
+
 ##########################################################
 # WIP
 ##########################################################
 
-* check for smaller dead tail matches.
-
-* complete get3XPlusOne_X1111_success test
 
 
-
+* profile the code and make task recommendations.
+  - nest the checks that involve big math?
+  - write next tails to files to allow for partial processing?
 
 
 
