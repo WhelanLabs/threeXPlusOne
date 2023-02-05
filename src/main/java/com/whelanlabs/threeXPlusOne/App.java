@@ -22,12 +22,27 @@ public class App {
 
 		System.out.println("length = " + length);
 
+		long startTime = 0l;
+		Integer lastProcessesCount = 0;
 		List<List<Integer>> listOfListOfBits = Utils.getListOfBits(length);
 		do {
 			List<List<Integer>> nextBatch = new ArrayList<>();
 			
 			i++;
+			
+			long endTime = System.currentTimeMillis();
+			if(0 != startTime) {
+				long durationSeconds = (endTime - startTime)/1000;
+				if(durationSeconds>0) {
+					long processingRate = lastProcessesCount/durationSeconds;
+					logger.info("      processed " + processingRate + " tails per second.");
+				}
+			}
+			
 			logger.info("##### batch " + i + " Batch size: " + listOfListOfBits.size() + ") ###");
+			
+			lastProcessesCount = listOfListOfBits.size();
+			startTime = System.currentTimeMillis();
 			
 			for (List<Integer> listOfBits : listOfListOfBits) {
 				if (1 == listOfBits.get(listOfBits.size() - 1)) {

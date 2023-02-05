@@ -40,7 +40,7 @@
 
 
 * profile the code and make task recommendations.
-  - nest the checks that involve big math?
+  - nest and order the checks that involve big math?
   - write next tails to files to allow for partial processing?
 
 
