@@ -45,43 +45,90 @@ public class Utils {
 			Integer v1 = oneXList.get(i);
 			Integer v2 = twoXPlusOneList.get(i + 1);
 			Integer v3 = 0;
-			String valuesString = "[" + v1 + "," + v2 + "," + r + "]";
+			// String valuesString = "[" + v1 + "," + v2 + "," + r + "]";
 
-			// single digit addition of two bits including the previous carry
-			switch (valuesString) {
-			case "[0,0,0]":
-				v3 = 0;
-				r = 0;
-				break;
-			case "[0,0,1]":
-				v3 = 1;
-				r = 0;
-				break;
-			case "[0,1,0]":
-				v3 = 1;
-				r = 0;
-				break;
-			case "[0,1,1]":
-				v3 = 0;
-				r = 1;
-				break;
-			case "[1,0,0]":
-				v3 = 1;
-				r = 0;
-				break;
-			case "[1,0,1]":
-				v3 = 0;
-				r = 1;
-				break;
-			case "[1,1,0]":
-				v3 = 0;
-				r = 1;
-				break;
-			case "[1,1,1]":
-				v3 = 1;
-				r = 1;
-				break;
+			if(0 == v1) {
+				if(0 == v2) {
+					if(0 == r) { // 000
+						v3 = 0;
+						r = 0;
+					}
+					else { // 001
+						v3 = 1;
+						r = 0;
+					}
+				}
+				else { // v2 == 1
+					if(0 == r) { // 010
+						v3 = 1;
+						r = 0;
+					}
+					else { // 011
+						v3 = 0;
+						r = 1;
+					}
+				}
 			}
+			else { // v1 == 1
+				if(0 == v2) {
+					if(0 == r) { // 100
+						v3 = 1;
+						r = 0;
+					}
+					else { // 101
+						v3 = 0;
+						r = 1;
+					}
+				}
+				else { // v2 == 1
+					if(0 == r) { // 110
+						v3 = 0;
+						r = 1;
+					}
+					else { // 111
+						v3 = 1;
+						r = 1;
+					}
+				}
+			}
+				
+			
+			
+//			// single digit addition of two bits including the previous carry
+//			switch (valuesString) {
+//			case "[0,0,0]":
+//				v3 = 0;
+//				r = 0;
+//				break;
+//			case "[0,0,1]":
+//				v3 = 1;
+//				r = 0;
+//				break;
+//			case "[0,1,0]":
+//				v3 = 1;
+//				r = 0;
+//				break;
+//			case "[0,1,1]":
+//				v3 = 0;
+//				r = 1;
+//				break;
+//			case "[1,0,0]":
+//				v3 = 1;
+//				r = 0;
+//				break;
+//			case "[1,0,1]":
+//				v3 = 0;
+//				r = 1;
+//				break;
+//			case "[1,1,0]":
+//				v3 = 0;
+//				r = 1;
+//				break;
+//			case "[1,1,1]":
+//				v3 = 1;
+//				r = 1;
+//				break;
+//			}
 
 			temp.add(v3);
 		}
