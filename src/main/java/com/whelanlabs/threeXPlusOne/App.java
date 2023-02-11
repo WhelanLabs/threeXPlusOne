@@ -39,7 +39,7 @@ public class App {
 				}
 			}
 			
-			logger.info("##### batch " + i + " Batch size: " + listOfListOfBits.size() + ") ###");
+			logger.info("##### batch " + i + " (batch size: " + listOfListOfBits.size() + ")");
 			
 			lastProcessesCount = listOfListOfBits.size();
 			startTime = System.currentTimeMillis();
