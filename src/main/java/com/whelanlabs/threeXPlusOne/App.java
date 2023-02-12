@@ -1,6 +1,7 @@
 package com.whelanlabs.threeXPlusOne;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -45,11 +46,16 @@ public class App {
 			lastProcessesCount = listOfListOfBits.size();
 			startTime = System.currentTimeMillis();
 			
-			List<List<Integer>> nextBatch = new ArrayList<>();
+			List<List<Integer>> nextBatch = Collections.synchronizedList(new ArrayList<>());
 			
-			for (List<Integer> listOfBits : listOfListOfBits) {
-				nextBatch.addAll(extracted(listOfBits));
-			}
+//			for (List<Integer> listOfBits : listOfListOfBits) {
+//				nextBatch.addAll(extracted(listOfBits));
+//			}
+
+		    listOfListOfBits.parallelStream().forEach((listOfBits) -> {
+		    	nextBatch.addAll(test(listOfBits));
+		    });
+		    
 			
 			listOfListOfBits = nextBatch;
 			
@@ -59,8 +65,11 @@ public class App {
 
 	}
 
-	private static List<List<Integer>> extracted(List<Integer> listOfBits) {
+	private static List<List<Integer>> test(List<Integer> listOfBits) {
 		List<List<Integer>> nextBatch = new ArrayList<>();
+		if (null == listOfBits) {
+			return nextBatch;
+		}
 		
 		if (1 == listOfBits.get(listOfBits.size() - 1)) {
 			
