@@ -26,7 +26,7 @@ public class App {
 		Integer lastProcessesCount = 0;
 		List<List<Integer>> listOfListOfBits = Utils.getListOfBits(length);
 		do {
-			List<List<Integer>> nextBatch = new ArrayList<>();
+			
 			
 			i++;
 			
@@ -45,44 +45,10 @@ public class App {
 			lastProcessesCount = listOfListOfBits.size();
 			startTime = System.currentTimeMillis();
 			
+			List<List<Integer>> nextBatch = new ArrayList<>();
+			
 			for (List<Integer> listOfBits : listOfListOfBits) {
-				if (1 == listOfBits.get(listOfBits.size() - 1)) {
-					
-					// skip cases where the starting value is 1
-					if(1 != listOfBits.stream().mapToInt(Integer::intValue).sum()) {
-						Boolean isDeadEnd = false;
-						List<Integer> currentBits = listOfBits;
-						TailArray startingPoint = new TailArray(currentBits);
-						TailArray startingTailArray = new TailArray(currentBits);
-
-						while (startingTailArray.getTail().size() > 0 && null != isDeadEnd && isDeadEnd == false) {
-							// System.out.println("currentBits = " + startingTailArray.getTail());
-
-							TailArray resultingTailArray = Utils.get3XPlusOne(startingTailArray);
-							isDeadEnd = Utils.isDeadEnd(startingPoint, resultingTailArray);
-							
-							if(resultingTailArray.getTail().size()<=1 && !isDeadEnd) {
-								logger.debug("Adding new child canidates for: " + listOfBits);
-								
-								List<Integer> leadingOne = new ArrayList<>();
-								leadingOne.add(1);
-								leadingOne.addAll(listOfBits);
-								nextBatch.add(leadingOne);
-								
-								List<Integer> leadingZero = new ArrayList<>();
-								leadingZero.add(0);
-								leadingZero.addAll(listOfBits);
-								nextBatch.add(leadingZero);
-								
-								break;
-							}
-							
-							startingTailArray = resultingTailArray;
-							// System.out.println("");
-						}
-					}
-
-				}
+				nextBatch.addAll(extracted(listOfBits));
 			}
 			
 			listOfListOfBits = nextBatch;
@@ -91,5 +57,48 @@ public class App {
 		
 
 
+	}
+
+	private static List<List<Integer>> extracted(List<Integer> listOfBits) {
+		List<List<Integer>> nextBatch = new ArrayList<>();
+		
+		if (1 == listOfBits.get(listOfBits.size() - 1)) {
+			
+			// skip cases where the starting value is 1
+			if(1 != listOfBits.stream().mapToInt(Integer::intValue).sum()) {
+				Boolean isDeadEnd = false;
+				List<Integer> currentBits = listOfBits;
+				TailArray startingPoint = new TailArray(currentBits);
+				TailArray startingTailArray = new TailArray(currentBits);
+
+				while (startingTailArray.getTail().size() > 0 && null != isDeadEnd && isDeadEnd == false) {
+					// System.out.println("currentBits = " + startingTailArray.getTail());
+
+					TailArray resultingTailArray = Utils.get3XPlusOne(startingTailArray);
+					isDeadEnd = Utils.isDeadEnd(startingPoint, resultingTailArray);
+					
+					if(resultingTailArray.getTail().size()<=1 && !isDeadEnd) {
+						logger.debug("Adding new child canidates for: " + listOfBits);
+						
+						List<Integer> leadingOne = new ArrayList<>();
+						leadingOne.add(1);
+						leadingOne.addAll(listOfBits);
+						nextBatch.add(leadingOne);
+						
+						List<Integer> leadingZero = new ArrayList<>();
+						leadingZero.add(0);
+						leadingZero.addAll(listOfBits);
+						nextBatch.add(leadingZero);
+						
+						break;
+					}
+					
+					startingTailArray = resultingTailArray;
+					// System.out.println("");
+				}
+			}
+
+		}
+		return nextBatch;
 	}
 }
