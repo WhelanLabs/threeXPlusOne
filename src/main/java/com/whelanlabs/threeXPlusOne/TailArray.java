@@ -50,32 +50,17 @@ public class TailArray {
 	}
 
 	public BigInteger getTailValue() {
-//		BigInteger result = zero;
-//		for (int i = 0; i < _tail.size(); i++) {
-//			int pos = _tail.size() - i - 1;
-//			if (_tail.get(i) == 1) {
-//				result.add(two.pow(pos));
-//			}
-//		}
 		return getTailValue(_tail);
 	}
 
 	public static BigInteger getTailValue(List<Integer> tail) {
 		BigInteger result = zero;
 		
-//		for (int i = tail.size() - 1; i >= 0; i--) {
-//			int pos = tail.size() - i - 1;
-//			if(tail.get(pos) == 1) {
-//				result = result.add(two.pow(i));
-//			}
-//		}
-		
 		if(tail.size() >0) {
 			String str = getNumberString(tail);
 			result = BigInteger.valueOf(Integer.parseInt(str, 2));
 		}
 
-		// int foo = Integer.parseInt("1001", 2);
 		return result;
 	}
 	

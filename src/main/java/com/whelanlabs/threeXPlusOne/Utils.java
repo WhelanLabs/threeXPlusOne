@@ -29,8 +29,6 @@ public class Utils {
 
 	public static TailArray get3XPlusOne(TailArray input) {
 
-		// logger.debug("input = " + input);
-
 		List<Integer> oneXList = input.getTail();
 		List<Integer> twoXPlusOneList = input.getTail();
 		twoXPlusOneList.add(1);
@@ -48,88 +46,43 @@ public class Utils {
 			Integer v3 = 0;
 			// String valuesString = "[" + v1 + "," + v2 + "," + r + "]";
 
-			if(0 == v1) {
-				if(0 == v2) {
-					if(0 == r) { // 000
+			if (0 == v1) {
+				if (0 == v2) {
+					if (0 == r) { // 000
 						v3 = 0;
 						r = 0;
-					}
-					else { // 001
+					} else { // 001
 						v3 = 1;
 						r = 0;
 					}
-				}
-				else { // v2 == 1
-					if(0 == r) { // 010
+				} else { // v2 == 1
+					if (0 == r) { // 010
 						v3 = 1;
 						r = 0;
-					}
-					else { // 011
+					} else { // 011
 						v3 = 0;
 						r = 1;
 					}
 				}
-			}
-			else { // v1 == 1
-				if(0 == v2) {
-					if(0 == r) { // 100
+			} else { // v1 == 1
+				if (0 == v2) {
+					if (0 == r) { // 100
 						v3 = 1;
 						r = 0;
-					}
-					else { // 101
+					} else { // 101
 						v3 = 0;
 						r = 1;
 					}
-				}
-				else { // v2 == 1
-					if(0 == r) { // 110
+				} else { // v2 == 1
+					if (0 == r) { // 110
 						v3 = 0;
 						r = 1;
-					}
-					else { // 111
+					} else { // 111
 						v3 = 1;
 						r = 1;
 					}
 				}
 			}
-				
-			
-			
-//			// single digit addition of two bits including the previous carry
-//			switch (valuesString) {
-//			case "[0,0,0]":
-//				v3 = 0;
-//				r = 0;
-//				break;
-//			case "[0,0,1]":
-//				v3 = 1;
-//				r = 0;
-//				break;
-//			case "[0,1,0]":
-//				v3 = 1;
-//				r = 0;
-//				break;
-//			case "[0,1,1]":
-//				v3 = 0;
-//				r = 1;
-//				break;
-//			case "[1,0,0]":
-//				v3 = 1;
-//				r = 0;
-//				break;
-//			case "[1,0,1]":
-//				v3 = 0;
-//				r = 1;
-//				break;
-//			case "[1,1,0]":
-//				v3 = 0;
-//				r = 1;
-//				break;
-//			case "[1,1,1]":
-//				v3 = 1;
-//				r = 1;
-//				break;
-//			}
 
 			temp.add(v3);
 		}
@@ -160,9 +113,6 @@ public class Utils {
 				reversedResultArray.add(value);
 			}
 		}
-		
-//		Collections.reverse(temp);
-//		reversedResultArray = temp;
 
 		for (int i = reversedResultArray.size() - 1; i >= 0; i--) {
 			Integer value = reversedResultArray.get(i);
@@ -227,11 +177,6 @@ public class Utils {
 			System.out.println("### bingo ###");
 			System.out.println("pre = " + pre);
 			System.out.println("post = " + post);
-
-//			System.out.println("post.getXCValue() = " + post.getXCValue());
-//			System.out.println("pre.getXCValue() = " + pre.getXCValue());
-//			System.out.println("pre.getXAValue() = " + pre.getXAValue());
-//			System.out.println("post.getXAValue() = " + post.getXAValue());
 
 			System.exit(0);
 		}
