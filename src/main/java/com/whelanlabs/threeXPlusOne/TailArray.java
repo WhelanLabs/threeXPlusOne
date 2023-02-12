@@ -3,6 +3,7 @@ package com.whelanlabs.threeXPlusOne;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TailArray {
 
@@ -62,14 +63,27 @@ public class TailArray {
 	public static BigInteger getTailValue(List<Integer> tail) {
 		BigInteger result = zero;
 		
-		for (int i = tail.size() - 1; i >= 0; i--) {
-			int pos = tail.size() - i - 1;
-			if(tail.get(pos) == 1) {
-				result = result.add(two.pow(i));
-			}
+//		for (int i = tail.size() - 1; i >= 0; i--) {
+//			int pos = tail.size() - i - 1;
+//			if(tail.get(pos) == 1) {
+//				result = result.add(two.pow(i));
+//			}
+//		}
+		
+		if(tail.size() >0) {
+			String str = getNumberString(tail);
+			result = BigInteger.valueOf(Integer.parseInt(str, 2));
 		}
+
+		// int foo = Integer.parseInt("1001", 2);
 		return result;
 	}
+	
+    public static String getNumberString(List<Integer> list)
+    {
+    	String numberString = list.stream().map(String::valueOf).collect(Collectors.joining());
+    	return numberString;
+    }
 
 	public BigInteger getXAValue() {
 		return _xaValue;

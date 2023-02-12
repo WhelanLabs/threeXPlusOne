@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -149,7 +150,7 @@ public class Utils {
 		List<Integer> resultArray = new ArrayList<>();
 		Boolean shift = true;
 
-		// convert the temp array into left/right format
+		// convert the temp array into left/right format and account for shifts
 		for (int i = 0; i < temp.size(); i++) {
 			Integer value = temp.get(i);
 			if (value == 0 & shift) {
@@ -159,6 +160,9 @@ public class Utils {
 				reversedResultArray.add(value);
 			}
 		}
+		
+//		Collections.reverse(temp);
+//		reversedResultArray = temp;
 
 		for (int i = reversedResultArray.size() - 1; i >= 0; i--) {
 			Integer value = reversedResultArray.get(i);

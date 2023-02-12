@@ -32,10 +32,11 @@ public class App {
 			
 			long endTime = System.currentTimeMillis();
 			if(0 != startTime) {
-				long durationSeconds = (endTime - startTime)/1000;
+				long duration = endTime - startTime;
+				long durationSeconds = duration/1000;
 				if(durationSeconds>0) {
 					long processingRate = lastProcessesCount/durationSeconds;
-					logger.info("      processed " + processingRate + " tails per second.");
+					logger.info("      processed " + processingRate + " tails per second. (total milliseconds: " + duration + ")");
 				}
 			}
 			
