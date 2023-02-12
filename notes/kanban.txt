@@ -33,15 +33,17 @@
 
 * complete 4-bit tests
 
+* profile the code and make imporvements.
+
+* parallel threads.
+
 ##########################################################
 # WIP
 ##########################################################
 
 
 
-* profile the code and make task recommendations.
-  - nest and order the checks that involve big math?
-  - write next tails to files to allow for partial processing?
+* Allow processing to run on multiple machines?
 
 
 
