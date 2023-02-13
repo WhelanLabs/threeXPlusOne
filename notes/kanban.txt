@@ -41,9 +41,9 @@
 # WIP
 ##########################################################
 
+* use files to limit memory usage. (push past level 27 with 8 GB)
 
 
-* Allow processing to run on multiple machines?
 
 
 
@@ -51,6 +51,9 @@
 # backlog
 ##########################################################
 
+* use GPU to process faster?
+
+* Allow processing to run on multiple machines?
 
 * write the readme.
 
