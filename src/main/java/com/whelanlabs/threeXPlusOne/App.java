@@ -1,5 +1,6 @@
 package com.whelanlabs.threeXPlusOne;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +16,7 @@ public class App {
 		// static class
 	}
 
-	public static void main() {
+	public static void main() throws IOException {
 		logger.info("Hello World!");
 		Integer length = 4;
 		Integer i = 0;
@@ -25,6 +26,11 @@ public class App {
 		long startTime = 0l;
 		Integer lastProcessesCount = 0;
 		List<List<Integer>> listOfListOfBits = Utils.getListOfBits(length);
+		
+		Feeder f = new Feeder(i.toString());
+		f.add(listOfListOfBits);
+		f.closeWriter();
+		
 		do {
 
 			i++;
@@ -40,20 +46,26 @@ public class App {
 				}
 			}
 
-			logger.info("##### batch " + i + " (batch size: " + listOfListOfBits.size() + ")");
+			logger.info("##### batch " + i + " (batch size: " + f.size() + ")");
 
-			lastProcessesCount = listOfListOfBits.size();
+			lastProcessesCount = f.size();
 			startTime = System.currentTimeMillis();
 
-			List<List<Integer>> nextBatch = Collections.synchronizedList(new ArrayList<>());
+			// List<List<Integer>> nextBatch = Collections.synchronizedList(new ArrayList<>());
+			
+			Feeder f2 = new Feeder(i.toString());
 
-			listOfListOfBits.parallelStream().forEach((listOfBits) -> {
-				nextBatch.addAll(test(listOfBits));
-			});
+			List<List<Integer>> canidates;
+			while(( canidates = f.get(1000000)).size() > 0) {
+				canidates.parallelStream().forEach((listOfBits) -> {
+						f2.add(test(listOfBits));
+				});
+			}
 
-			listOfListOfBits = nextBatch;
+			f2.closeWriter();
+			f = f2;
 
-		} while (listOfListOfBits.size() > 0);
+		} while (f.size() > 0);
 
 	}
 
