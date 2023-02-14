@@ -37,12 +37,13 @@
 
 * parallel threads.
 
+* use files to limit memory usage. (push past level 27 with 8 GB)
+
 ##########################################################
 # WIP
 ##########################################################
 
-* use files to limit memory usage. (push past level 27 with 8 GB)
-
+* fix Integer limit problem (TailArray line #61)
 
 
 
