@@ -23,9 +23,11 @@ public class Feeder {
 		_filename = "C:/_temp/tnpo/generation_" + generation + ".txt";
 		_myWriter = new FileWriter(_filename);
 	}
-	
-	
 
+	public Feeder(String generation) throws IOException {
+		_filename = "C:/_temp/tnpo/generation_" + generation + ".txt";
+	}
+	
 	public void add(List<List<Integer>> contents) {
 		try {
 			for (List<Integer> content : contents) {
@@ -39,7 +41,9 @@ public class Feeder {
 	}
 
 	public void closeWriter() throws IOException {
-		_myWriter.close();
+		if(null != _myWriter) {
+			_myWriter.close();
+		}
 	}
 
 	public synchronized List<List<Integer>> get(Integer batchSize) throws IOException {

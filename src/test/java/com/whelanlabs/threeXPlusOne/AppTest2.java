@@ -7,12 +7,14 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class AppTest {
+public class AppTest2 {
 
     @Test
     public void testApp() throws IOException
     {
-    	App.main();
+    	Integer i = 28;
+		Feeder f = new Feeder(i.toString());
+    	App.process(i, f);
     }
     
 }

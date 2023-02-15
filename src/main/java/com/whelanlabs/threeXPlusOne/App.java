@@ -18,18 +18,29 @@ public class App {
 	public static void main() throws IOException {
 		logger.info("Hello World!");
 		Integer length = 4;
-		Integer i = 0;
+		
 
 		System.out.println("length = " + length);
 
-		long startTime = 0l;
-		Integer lastProcessesCount = 0;
+		
+		
 		List<List<Integer>> listOfListOfBits = Utils.getListOfBits(length);
+		
+		Integer i = 0;
 		
 		Feeder f = new Feeder(i);
 		f.add(listOfListOfBits);
 		f.closeWriter();
 		
+		
+		process(i, f);
+
+	}
+
+	public static void process(Integer i, Feeder f) throws IOException {
+		long startTime = 0l;
+		
+		Integer lastProcessesCount = 0;
 		do {
 
 			i++;
@@ -63,7 +74,6 @@ public class App {
 			f = f2;
 
 		} while (f.size() > 0);
-
 	}
 
 	private static List<List<Integer>> test(List<Integer> listOfBits) {
