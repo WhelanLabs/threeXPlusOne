@@ -58,7 +58,7 @@ public class TailArray {
 		
 		if(tail.size() >0) {
 			String str = getNumberString(tail);
-			result = BigInteger.valueOf(Integer.parseInt(str, 2));
+			result = new BigInteger(str, 2);
 		}
 
 		return result;
