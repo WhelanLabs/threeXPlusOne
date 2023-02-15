@@ -2,7 +2,6 @@ package com.whelanlabs.threeXPlusOne;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -27,7 +26,7 @@ public class App {
 		Integer lastProcessesCount = 0;
 		List<List<Integer>> listOfListOfBits = Utils.getListOfBits(length);
 		
-		Feeder f = new Feeder(i.toString());
+		Feeder f = new Feeder(i);
 		f.add(listOfListOfBits);
 		f.closeWriter();
 		
@@ -51,9 +50,7 @@ public class App {
 			lastProcessesCount = f.size();
 			startTime = System.currentTimeMillis();
 
-			// List<List<Integer>> nextBatch = Collections.synchronizedList(new ArrayList<>());
-			
-			Feeder f2 = new Feeder(i.toString());
+			Feeder f2 = new Feeder(i);
 
 			List<List<Integer>> canidates;
 			while(( canidates = f.get(1000000)).size() > 0) {
@@ -77,7 +74,7 @@ public class App {
 
 		if (1 == listOfBits.get(listOfBits.size() - 1)) {
 
-			// skip cases where the starting value is 1
+			// skip cases where the starting value is 1 - the trivial case
 			if (1 != listOfBits.stream().mapToInt(Integer::intValue).sum()) {
 				Boolean isDeadEnd = false;
 				List<Integer> currentBits = listOfBits;

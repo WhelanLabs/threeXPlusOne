@@ -1,15 +1,12 @@
 package com.whelanlabs.threeXPlusOne;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,10 +19,12 @@ public class Feeder {
 	private BufferedReader _br = null;
 	private Integer _size = 0;
 
-	public Feeder(String generation) throws IOException {
+	public Feeder(Integer generation) throws IOException {
 		_filename = "C:/_temp/tnpo/generation_" + generation + ".txt";
 		_myWriter = new FileWriter(_filename);
 	}
+	
+	
 
 	public void add(List<List<Integer>> contents) {
 		try {

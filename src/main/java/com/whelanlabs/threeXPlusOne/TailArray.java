@@ -11,11 +11,9 @@ public class TailArray {
 	private static final BigInteger zero = BigInteger.valueOf(0);
 	
 	private List<Integer> _tail;
-	private BigInteger _tailValue;
 	private Integer _shifts;
 	private BigInteger _xaValue;
 	private BigInteger _xbValue;
-	private Boolean _smaller = false;
 
 	public TailArray(List<Integer> tail) {
 		if (null == tail) {
@@ -38,7 +36,6 @@ public class TailArray {
 		_xaValue = two.pow(tail.size());
 		_xbValue = zero;
 
-		_tailValue = getTailValue();
 	}
 
 	public TailArray(BigInteger a, BigInteger b, List<Integer> tail, Integer shifts) {
@@ -46,7 +43,6 @@ public class TailArray {
 		_shifts = shifts;
 		_xaValue = a;
 		_xbValue = b;
-		_tailValue = getTailValue(tail);
 	}
 
 	public BigInteger getTailValue() {
