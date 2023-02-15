@@ -45,7 +45,7 @@
 # WIP
 ##########################################################
 
-
+* use GPU to process faster?
 
 
 
@@ -54,7 +54,6 @@
 # backlog
 ##########################################################
 
-* use GPU to process faster?
 
 * Allow processing to run on multiple machines?
 
