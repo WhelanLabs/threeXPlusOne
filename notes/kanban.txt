@@ -45,7 +45,7 @@
 # WIP
 ##########################################################
 
-* use GPU to process faster?
+* write the readme.
 
 
 
@@ -57,7 +57,7 @@
 
 * Allow processing to run on multiple machines?
 
-* write the readme.
+
 
 * ponder if looking at headstrings might proove more benificial to
   calculate for smallest initial odd value. (next project?)
