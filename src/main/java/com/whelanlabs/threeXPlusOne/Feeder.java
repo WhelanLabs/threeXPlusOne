@@ -31,7 +31,7 @@ public class Feeder {
 	public void add(List<List<Integer>> contents) {
 		try {
 			for (List<Integer> content : contents) {
-				_myWriter.write(content.toString().replace("[", "").replace("]", "") + "\n");
+				_myWriter.write(content.toString().replace("[", "").replace("]", "").replace(" ", "") + "\n");
 			}
 			_myWriter.flush();
 		} catch (IOException e) {
@@ -74,6 +74,7 @@ public class Feeder {
 	}
 
 	public Integer size() {
+		// not exact due to race conditions, but usually close (it is OK)
 		return _size;
 	}
 
