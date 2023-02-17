@@ -56,7 +56,7 @@ public class App {
 				}
 			}
 
-			logger.info("##### batch " + i + " (batch size: " + f.size() + ")");
+			logger.info("##### batch " + i + " (batch size: ~" + f.size() + ")");
 
 			lastProcessesCount = f.size();
 			startTime = System.currentTimeMillis();
@@ -64,10 +64,12 @@ public class App {
 			Feeder f2 = new Feeder(i);
 
 			List<List<Integer>> canidates;
-			while(( canidates = f.get(1000000)).size() > 0) {
+			Integer batchSize = 1000000;
+			while(( canidates = f.get(batchSize)).size() > 0) {
 				canidates.parallelStream().forEach((listOfBits) -> {
 						f2.add(test(listOfBits));
 				});
+				logger.info("      Processed " + canidates.size() + " canidates." );
 			}
 
 			f2.closeWriter();

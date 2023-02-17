@@ -12,7 +12,7 @@ public class AppTest2 {
     @Test
     public void testApp() throws IOException
     {
-    	Integer i = 28;
+    	Integer i = 34;
 		Feeder f = new Feeder(i.toString());
     	App.process(i, f);
     }

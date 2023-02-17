@@ -155,10 +155,13 @@ public class Utils {
 		}
 
 		// case 1: closed loop
-		boolean case_1 = (bottom.compareTo(BigInteger.ZERO) == 0) && (top.compareTo(BigInteger.ZERO) == 0);
+		int topCompare = top.compareTo(BigInteger.ZERO);
+		
+		// boolean case_1 = (bottom.compareTo(BigInteger.ZERO) == 0) && (top.compareTo(BigInteger.ZERO) == 0);
+		boolean case_1 = ((topCompare) == 0);
 
 		// case 2: future solution found
-		boolean case_2 = ((top.compareTo(BigInteger.ZERO)) > 0 && (bottom.compareTo(BigInteger.ZERO) > 0)
+		boolean case_2 = ((topCompare) > 0 && (bottom.compareTo(BigInteger.ZERO) > 0)
 				&& (BigInteger.ZERO.compareTo(top.mod(bottom)) == 0));
 
 		if (case_1 || case_2) {
