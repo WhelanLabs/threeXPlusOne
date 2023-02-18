@@ -46,6 +46,8 @@
 ##########################################################
 
 * write the readme.
+  - describe checking logic
+  - spelling and grammar
 
 
 
@@ -54,6 +56,9 @@
 # backlog
 ##########################################################
 
+* make project public
+
+* submit to reddit
 
 * Allow processing to run on multiple machines?
 
