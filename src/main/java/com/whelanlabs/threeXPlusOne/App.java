@@ -58,7 +58,7 @@ public class App {
 
 			logger.info("##### batch " + i + " (batch size: ~" + f.size() + ")");
 
-			lastProcessesCount = f.size();
+			
 			startTime = System.currentTimeMillis();
 
 			Feeder f2 = new Feeder(i);
@@ -69,7 +69,10 @@ public class App {
 				canidates.parallelStream().forEach((listOfBits) -> {
 						f2.add(test(listOfBits));
 				});
-				logger.info("      Processed " + canidates.size() + " canidates." );
+				
+				Integer canidatesProcessed = canidates.size();
+				lastProcessesCount += canidatesProcessed;
+				logger.info("      Processed " + canidatesProcessed + " canidates." );
 			}
 
 			f2.closeWriter();
