@@ -1,16 +1,11 @@
 package com.whelanlabs.threeXPlusOne;
 
-import static org.junit.Assert.*;
-
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 public class UtilsTest {
-	private static final Logger logger = LogManager.getLogger(UtilsTest.class);
 
 	@Test
 	public void get3XPlusOne_X0001_success() {
@@ -99,4 +94,17 @@ public class UtilsTest {
 		TailArray d = Utils.get3XPlusOne(c);
 		assert("{ formula:\"81X+80\", base:\"(81X+80)[]\", shifts:1 }".equals(d.toString())): d.toString();
 	}
+	
+	
+	@Test
+	public void reddit_response_00011() {
+		List<Integer> startingBits = Arrays.asList(0,0,0,1,1);
+		TailArray startingTailArray = new TailArray(startingBits);
+		TailArray r1 = Utils.get3XPlusOne(startingTailArray);
+		System.out.println("r1:  "+ r1);
+		TailArray r2 = Utils.get3XPlusOne(r1);
+		System.out.println("r2:  "+ r2);
+	}
+	
+	
 }

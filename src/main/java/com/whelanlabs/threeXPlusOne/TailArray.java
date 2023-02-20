@@ -9,7 +9,7 @@ public class TailArray {
 
 	private static final BigInteger two = BigInteger.valueOf(2);
 	private static final BigInteger zero = BigInteger.valueOf(0);
-	
+
 	private List<Integer> _tail;
 	private Integer _shifts;
 	private BigInteger _xaValue;
@@ -51,20 +51,19 @@ public class TailArray {
 
 	public static BigInteger getTailValue(List<Integer> tail) {
 		BigInteger result = zero;
-		
-		if(tail.size() >0) {
+
+		if (tail.size() > 0) {
 			String str = getNumberString(tail);
 			result = new BigInteger(str, 2);
 		}
 
 		return result;
 	}
-	
-    public static String getNumberString(List<Integer> list)
-    {
-    	String numberString = list.stream().map(String::valueOf).collect(Collectors.joining());
-    	return numberString;
-    }
+
+	public static String getNumberString(List<Integer> list) {
+		String numberString = list.stream().map(String::valueOf).collect(Collectors.joining());
+		return numberString;
+	}
 
 	public BigInteger getXAValue() {
 		return _xaValue;
@@ -92,8 +91,8 @@ public class TailArray {
 	}
 
 	public String toString() {
-		return "{ formula:\"" + _xaValue + "X+" + getXCValue().toString() + "\", base:\"(" + _xaValue + "X+" + _xbValue + ")"
-				+ _tail + "\", shifts:" + _shifts + " }";
+		return "{ formula:\"" + _xaValue + "X+" + getXCValue().toString() + "\", base:\"(" + _xaValue + "X+" + _xbValue
+				+ ")" + _tail + "\", shifts:" + _shifts + " }";
 	}
 
 }

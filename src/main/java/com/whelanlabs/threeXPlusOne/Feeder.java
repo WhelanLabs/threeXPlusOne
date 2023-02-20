@@ -8,13 +8,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 public class Feeder {
 
 	private FileWriter _myWriter = null;
-	private static final Logger logger = LogManager.getLogger(Feeder.class);
 	private String _filename = null;
 	private BufferedReader _br = null;
 	private Integer _size = 0;

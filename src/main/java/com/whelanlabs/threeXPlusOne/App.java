@@ -16,30 +16,24 @@ public class App {
 	}
 
 	public static void main() throws IOException {
-		logger.info("Hello World!");
 		Integer length = 4;
-		
 
 		System.out.println("length = " + length);
 
-		
-		
 		List<List<Integer>> listOfListOfBits = Utils.getListOfBits(length);
-		
+
 		Integer i = 0;
-		
+
 		Feeder f = new Feeder(i);
 		f.add(listOfListOfBits);
 		f.closeWriter();
-		
-		
-		process(i, f);
 
+		process(i, f);
 	}
 
 	public static void process(Integer i, Feeder f) throws IOException {
 		long startTime = 0l;
-		
+
 		Integer lastProcessesCount = 0;
 		do {
 
@@ -58,21 +52,20 @@ public class App {
 
 			logger.info("##### batch " + i + " (batch size: ~" + f.size() + ")");
 
-			
 			startTime = System.currentTimeMillis();
 
 			Feeder f2 = new Feeder(i);
 
 			List<List<Integer>> canidates;
 			Integer batchSize = 1000000;
-			while(( canidates = f.get(batchSize)).size() > 0) {
+			while ((canidates = f.get(batchSize)).size() > 0) {
 				canidates.parallelStream().forEach((listOfBits) -> {
-						f2.add(test(listOfBits));
+					f2.add(test(listOfBits));
 				});
-				
+
 				Integer canidatesProcessed = canidates.size();
 				lastProcessesCount += canidatesProcessed;
-				logger.info("      Processed " + canidatesProcessed + " canidates." );
+				logger.info("      Processed " + canidatesProcessed + " canidates.");
 			}
 
 			f2.closeWriter();
@@ -97,7 +90,6 @@ public class App {
 				TailArray startingTailArray = new TailArray(currentBits);
 
 				while (startingTailArray.getTail().size() > 0 && null != isDeadEnd && isDeadEnd == false) {
-					// System.out.println("currentBits = " + startingTailArray.getTail());
 
 					TailArray resultingTailArray = Utils.get3XPlusOne(startingTailArray);
 					isDeadEnd = Utils.isDeadEnd(startingPoint, resultingTailArray);
