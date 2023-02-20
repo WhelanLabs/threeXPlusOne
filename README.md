@@ -55,3 +55,6 @@ The program currently only runs on a single machine.  Augmentation of the Feeder
 
 The program currently has a hardcoded batch size. as candidates get big, this may prove to be a problem.  Adding logic to adjust the batch size to stay within memory constraints could be done.  (At present, the program runs fine within a 4GB XMX setting.)
 
+## Afterwards
+
+There are several better sieves out there. I'm not entirely sure how they are able to filter additional numbers.  For reference, the following one filters more than my program: https://github.com/xbarin02/collatz-sieve
